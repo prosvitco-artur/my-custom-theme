@@ -50,7 +50,6 @@ class Blocksy_Manager {
 		$this->register_autoloader();
 
 		$this->db = new \Blocksy\Database();
-		$this->db_versioning = new \Blocksy\DbVersioning();
 
 		$this->builder = new Blocksy_Customizer_Builder();
 

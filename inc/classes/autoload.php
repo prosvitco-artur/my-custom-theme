@@ -22,26 +22,7 @@ class ThemeAutoloader {
 			'StringHelpers' => 'inc/classes/StringHelpers.php',
 
 			'Database' => 'inc/classes/database.php',
-			'DbVersioning' => 'inc/classes/theme-db-versioning.php',
-
-			'DbVersioning\\CacheManager' => 'inc/classes/db-versioning/utils/cache-manager.php',
-
-			'DbVersioning\\V200' => 'inc/classes/db-versioning/v2-0-0.php',
-			'DbVersioning\\V202' => 'inc/classes/db-versioning/v2-0-2.php',
-			'DbVersioning\\V203' => 'inc/classes/db-versioning/v2-0-3.php',
-			'DbVersioning\\V209' => 'inc/classes/db-versioning/v2-0-9.php',
-			'DbVersioning\\V2015' => 'inc/classes/db-versioning/v2-0-15.php',
-			'DbVersioning\\V2019' => 'inc/classes/db-versioning/v2-0-19.php',
-			'DbVersioning\\V2026' => 'inc/classes/db-versioning/v2-0-26.php',
-			'DbVersioning\\V2027' => 'inc/classes/db-versioning/v2-0-27.php',
-			'DbVersioning\\V2031' => 'inc/classes/db-versioning/v2-0-31.php',
-
-			'DbVersioning\\DefaultValuesCleaner' => 'inc/classes/db-versioning/utils/db-default-values-cleaner.php',
-
-			'Database\\SearchReplace' => 'inc/classes/db-versioning/utils/db-search-replace.php',
-			'Database\\Utils' => 'inc/classes/db-versioning/utils/db-utils.php',
-			'Database\\SearchReplacer' => 'inc/classes/db-versioning/utils/db-search-replacer.php',
-
+			
 			'FontsManager' => 'inc/css/fonts-manager.php',
 
 			'WpHooksManager' => 'inc/classes/hooks-manager.php',
