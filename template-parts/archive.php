@@ -22,7 +22,7 @@ if (! have_posts()) {
 
 ?>
 
-<div class="<?= $container_class ?>" <?= wp_kses_post(blocksy_sidebar_position_attr()); ?>>
+<div class="<?= $container_class ?>">
 	<section <?php echo $section_class ?>>
 		<?= blocksy_render_archive_cards(); ?>
 	</section>

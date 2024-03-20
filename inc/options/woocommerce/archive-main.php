@@ -238,13 +238,6 @@ $options = [
 				'prefix' => 'woo_categories',
 			]),
 
-			[
-				blocksy_rand_md5() => [
-					'type'  => 'ct-title',
-					'label' => __( 'Functionality Options', 'blocksy' ),
-				],
-			],
-
 			apply_filters(
 				'blocksy:options:woocommerce:archive:ajax-filtering',
 				[]

@@ -85,46 +85,6 @@ add_action('after_setup_theme', function () {
 	);
 }, 0);
 
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-add_action(
-	'widgets_init',
-	function () {
-		$sidebar_title_tag = blocksy_get_theme_mod('widgets_title_wrapper', 'h3');
-
-		register_sidebar(
-			[
-				'name' => esc_html__( 'Main Sidebar', 'blocksy' ),
-				'id' => 'sidebar-1',
-				'description' => esc_html__( 'Add widgets here.', 'blocksy' ),
-				'before_widget' => '<div class="ct-widget %2$s" id="%1$s">',
-				'after_widget' => '</div>',
-				'before_title' => '<' . $sidebar_title_tag . ' class="widget-title">',
-				'after_title' => '</' . $sidebar_title_tag . '>',
-			]
-		);
-
-		do_action('blocksy:widgets_init', $sidebar_title_tag);
-
-		$number_of_sidebars = 6;
-
-		for ($i = 1; $i <= $number_of_sidebars; $i++) {
-			register_sidebar(
-				[
-					'id' => 'ct-footer-sidebar-' . $i,
-					'name' => esc_html__('Footer Widget Area ', 'blocksy') . $i,
-					'before_widget' => '<div class="ct-widget %2$s" id="%1$s">',
-					'after_widget' => '</div>',
-					'before_title' => '<' . $sidebar_title_tag . ' class="widget-title">',
-					'after_title' => '</' . $sidebar_title_tag . '>',
-				]
-			);
-		}
-	}
-);
 
 require get_template_directory() . '/inc/manager.php';
 
@@ -159,7 +119,6 @@ require get_template_directory() . '/inc/css/spacing.php';
 require get_template_directory() . '/inc/css/box-shadow-option.php';
 require get_template_directory() . '/inc/css/typography.php';
 require get_template_directory() . '/inc/css/backgrounds.php';
-require get_template_directory() . '/inc/sidebar.php';
 
 require get_template_directory() . '/inc/components/single/single-helpers.php';
 require get_template_directory() . '/inc/components/single/content-helpers.php';

@@ -92,23 +92,12 @@ $inner_options = [
 
 	$pagination_options,
 
-	[
-		blocksy_rand_md5() => [
-			'type' => 'ct-title',
-			'label' => __( 'Functionality Options', 'blocksy' ),
-		],
-	],
-
 	apply_filters(
 		'blocksy_posts_home_page_elements_end',
 		[],
 		'blog',
 		'post'
 	),
-
-	blocksy_get_options('general/cards-reveal-effect', [
-		'prefix' => 'blog',
-	]),
 ];
 
 $options = [

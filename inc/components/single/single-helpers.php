@@ -576,22 +576,6 @@ if (! function_exists('blocksy_get_featured_image_output')) {
 			)
 		);
 
-		if (blocksy_sidebar_position() === 'none') {
-			$image_width = blocksy_akg_or_customizer(
-				'featured_image_width',
-				$featured_image_source,
-				'default'
-			);
-
-			if ($image_width === 'wide') {
-				$class .= ' alignwide';
-			}
-
-			if ($image_width === 'full') {
-				$class .= ' alignfull';
-			}
-		}
-
 		$maybe_figcaption = wp_get_attachment_caption(get_post_thumbnail_id());
 
 		if (! empty($maybe_figcaption)) {

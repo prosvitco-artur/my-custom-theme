@@ -24,7 +24,6 @@ if ($page_structure === 'none' || blocksy_post_uses_vc()) {
 
 	<div
 		class="<?php echo trim($container_class) ?>"
-		<?php echo wp_kses_post(blocksy_sidebar_position_attr()); ?>
 		<?php echo $data_container_output; ?>>
 
 		<?php do_action('blocksy:single:container:top'); ?>

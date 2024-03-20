@@ -128,25 +128,6 @@ class Blocksy_Static_Css_Files {
 			],
 
 			[
-				'id' => 'ct-sidebar-styles',
-				'url' => '/static/bundle/sidebar.min.css',
-				'deps' => ['ct-main-styles'],
-				'enabled' => (
-					blocksy_sidebar_position() !== 'none'
-					||
-					is_customize_preview()
-					||
-					(
-						function_exists('is_woocommerce')
-						&&
-						is_woocommerce()
-						&&
-						blocksy_get_theme_mod('has_woo_offcanvas_filter', 'no') === 'yes'
-					)
-				)
-			],
-
-			[
 				'id' => 'ct-share-box-styles',
 				'url' => '/static/bundle/share-box.min.css',
 				'deps' => ['ct-main-styles'],

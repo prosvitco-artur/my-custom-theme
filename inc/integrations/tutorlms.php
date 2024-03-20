@@ -33,11 +33,6 @@ if (! function_exists('blocksy_tutor_lms_course_content_open')) {
 			$attr['data-content'] = $page_structure;
 		}
 
-		$attr = array_merge($attr, blocksy_sidebar_position_attr([
-			'attr_id' => 'data-tutor-sidebar',
-			'array' => true
-		]));
-
 
 		if (apply_filters('blocksy:single:has-default-hero', true)) {
 
@@ -75,11 +70,6 @@ if (! function_exists('blocksy_tutor_lms_content_open')) {
 		} else {
 			$attr['data-content'] = $page_structure;
 		}
-
-		$attr = array_merge($attr, blocksy_sidebar_position_attr([
-			'array' => true
-		]));
-
 
 		echo '<div ' . blocksy_attr_to_html($attr) . '>';
 
