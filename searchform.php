@@ -134,10 +134,6 @@ if ($has_taxonomy_filter) {
 	if (empty($allowed_post_types)) {	
 		$allowed_post_types[] = 'post';
 		$allowed_post_types[] = 'page';
-
-		if (class_exists('WooCommerce')) {
-			$allowed_post_types[] = 'product';
-		}
 		
 		$all_cpts = blocksy_manager()->post_types->get_supported_post_types();
 		
