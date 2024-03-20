@@ -14,15 +14,7 @@ if (! isset($title)) {
 	$title = __('Blog', 'blocksy');
 }
 
-$has_card_matching_template = (
-	function_exists('blc_get_content_block_that_matches')
-	&&
-	blc_get_content_block_that_matches([
-		'template_type' => 'archive',
-		'template_subtype' => 'card',
-		'match_conditions_strategy' => rtrim($prefix, '_')
-	])
-);
+$has_card_matching_template = false;
 
 $overridable_card_options = [
 	blocksy_rand_md5() => [

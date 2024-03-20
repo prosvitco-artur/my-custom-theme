@@ -74,22 +74,6 @@ if (! function_exists('blocksy_get_listing_card_type')) {
 
 		$card_type = blocksy_get_theme_mod($args['prefix'] . '_card_type', 'boxed');
 
-		if ($card_type === 'cover') {
-			if (
-				$blog_post_structure === 'simple'
-				||
-				(
-					function_exists('blc_get_content_block_that_matches')
-					&&
-					blc_get_content_block_that_matches([
-						'template_type' => 'archive'
-					])
-				)
-			) {
-				$card_type = 'boxed';
-			}
-		}
-
 		return $card_type;
 	}
 }
@@ -103,30 +87,10 @@ if (! function_exists('blocksy_listing_page_structure')) {
 			]
 		);
 
-
 		$blog_post_structure = blocksy_get_theme_mod(
 			$args['prefix'] . '_structure',
 			'grid'
 		);
-
-		if (
-			$blog_post_structure === 'gutenberg'
-			||
-			$blog_post_structure === 'simple'
-		) {
-			$has_matching_template = (
-				function_exists('blc_get_content_block_that_matches')
-				&&
-				blc_get_content_block_that_matches([
-					'template_type' => 'archive',
-					'match_conditions_strategy' => rtrim($args['prefix'], '_')
-				])
-			);
-
-			if ($has_matching_template) {
-				return 'grid';
-			}
-		}
 
 		return $blog_post_structure;
 	}

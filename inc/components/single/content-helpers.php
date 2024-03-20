@@ -203,29 +203,12 @@ function blocksy_single_content($content = null) {
 			<?php
 
 			if (! is_attachment()) {
-				if (
-					function_exists('blc_get_content_block_that_matches')
-					&&
-					blc_get_content_block_that_matches([
-						'template_type' => 'single',
-						'template_subtype' => 'content'
-					])
-				) {
-					$content = blc_render_content_block(
-						blc_get_content_block_that_matches([
-							'template_type' => 'single',
-							'template_subtype' => 'content'
-						])
-					);
-				}
-
 				if ($content) {
 					echo $content;
 				} else {
 					the_content(
 						blocksy_safe_sprintf(
 							wp_kses(
-								/* translators: 1: span open 2: Name of current post. Only visible to screen readers 3: span closing */
 								__(
 									'Continue reading%1$s "%2$s"%3$s',
 									'blocksy'

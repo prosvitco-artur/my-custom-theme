@@ -120,32 +120,6 @@ $inner_options = [
 	]
 ];
 
-if (
-	function_exists('blc_get_content_block_that_matches')
-	&&
-	blc_get_content_block_that_matches([
-		'template_type' => 'archive',
-		'template_subtype' => 'canvas',
-		'match_conditions_strategy' => 'search'
-	])
-) {
-	$inner_options = [
-		blocksy_rand_md5() => [
-			'type' => 'ct-notification',
-			'attr' => [ 'data-type' => 'background:white' ],
-			'text' => blocksy_safe_sprintf(
-				__('This archive page is overrided by a custom template, to edit it please access %sthis page%s.', 'blocksy'),
-				'<a href="' . get_edit_post_link(blc_get_content_block_that_matches([
-					'template_type' => 'archive',
-					'template_subtype' => 'canvas',
-					'match_conditions_strategy' => 'search'
-				])) . '" target="_blank">',
-				'</a>'
-			)
-		],
-	];
-}
-
 $options = [
 	'search_section_options' => [
 		'type' => 'ct-options',

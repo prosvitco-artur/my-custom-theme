@@ -21,32 +21,9 @@ if (! function_exists('blocksy_render_archive_cards')) {
 		if ($args['query']->have_posts()) {
 			$entries_open = '<div class="entries" ';
 
-			$container_output = apply_filters(
-				'blocksy:posts-listing:container:custom-output',
-				null
-			);
-
 			$has_cards_type = true;
 
-			if ($container_output) {
-				$hook_id = blc_get_content_block_that_matches([
-					'template_type' => 'archive'
-				]);
-
-				$atts = blocksy_get_post_options($hook_id);
-
-				if (blocksy_akg(
-					'has_template_default_layout',
-					$atts,
-					'yes'
-				) !== 'yes') {
-					$has_cards_type = false;
-				}
-
-				$entries_open .= 'data-archive="custom"';
-			} else {
-				$entries_open .= 'data-archive="default"';
-			}
+			$entries_open .= 'data-archive="default"';
 
 			$entries_open .= ' data-layout="' . esc_attr($blog_post_structure) . '"';
 

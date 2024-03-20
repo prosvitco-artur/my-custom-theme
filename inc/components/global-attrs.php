@@ -143,9 +143,6 @@ if (! function_exists('blocksy_body_attr')) {
 					'inherit'
 				);
 
-				if ($vertical_spacing_source !== 'inherit') {
-					$prefix_custom[] = 'vertical-spacing';
-				}
 			}
 
 			if (! empty($prefix_custom)) {
