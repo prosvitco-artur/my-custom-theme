@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Search form
- *
- * @copyright 2019-present Creative Themes
- * @license   http://www.gnu.org/copyleft/gpl.html GNU General Public License
- */
 
 $placeholder = esc_attr_x('Search', 'placeholder', 'blocksy');
 

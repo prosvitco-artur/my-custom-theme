@@ -35,15 +35,6 @@ if (! function_exists('blocksy_output_header')) {
 			return;
 		}
 
-		if (
-			function_exists('boostify_header_active')
-			&&
-			boostify_header_active()
-		) {
-			boostify_get_header_template();
-			return;
-		}
-
 		if (function_exists('hfe_render_header') && hfe_header_enabled()) {
 			hfe_render_header();
 			return;
@@ -102,15 +93,6 @@ if (! function_exists('blocksy_output_footer')) {
 					])
 				)
 			);
-			return;
-		}
-
-		if (
-			function_exists('boostify_footer_active')
-			&&
-			boostify_footer_active()
-		) {
-			boostify_get_footer_template();
 			return;
 		}
 

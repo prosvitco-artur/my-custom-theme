@@ -1,11 +1,4 @@
 <?php
-/**
- * Comments helpers.
- *
- * @copyright 2019-present Creative Themes
- * @license   http://www.gnu.org/copyleft/gpl.html GNU General Public License
- * @package   Blocksy
- */
 
 add_filter('comment_form_defaults', function ($defaults) {
 	ob_start();
