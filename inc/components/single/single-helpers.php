@@ -98,12 +98,12 @@ function blocksy_count_user_posts() {
 }
 
 
-if (! function_exists('blocksy_post_uses_vc')) {
-	function blocksy_post_uses_vc() {
-		$post = get_post();
-		return $post && preg_match('/vc_row/', $post->post_content);
-	}
-}
+// if (! function_exists('blocksy_post_uses_vc')) {
+// 	function blocksy_post_uses_vc() {
+// 		$post = get_post();
+// 		return $post && preg_match('/vc_row/', $post->post_content);
+// 	}
+// }
 
 if (! function_exists('blocksy_get_content_style_default')) {
 	function blocksy_get_content_style_default($prefix = null) {

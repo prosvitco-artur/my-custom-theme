@@ -4,27 +4,9 @@ if (have_posts()) {
 	the_post();
 }
 
-$page_structure = blocksy_get_page_structure();
-
-$container_class = 'ct-container-full';
-$data_container_output = '';
-
-if ($page_structure === 'none' || blocksy_post_uses_vc()) {
-	$container_class = 'ct-container';
-
-	if ($page_structure === 'narrow') {
-		$container_class = 'ct-container-narrow';
-	}
-} else {
-	$data_container_output = 'data-content="' . $page_structure . '"';
-}
-
-
 ?>
 
-	<div
-		class="<?php echo trim($container_class) ?>"
-		<?php echo $data_container_output; ?>>
+	<div class="ct-container">
 
 		<?php do_action('blocksy:single:container:top'); ?>
 

@@ -69,12 +69,6 @@ $options = [
 			'options' => blocksy_get_options( 'general/footer' ),
 		],
 
-		'sidebar' => [
-			'title' => __( 'Sidebar', 'blocksy' ),
-			'container' => [ 'priority' => 1 ],
-			'options' => blocksy_get_options( 'general/sidebar' ),
-		],
-
 		'color' => [
 			'title' => __( 'Colors', 'blocksy' ),
 			'container' => [ 'priority' => 1 ],

@@ -163,13 +163,6 @@ if (! function_exists('blocksy_schema_org_definitions')) {
 			];
 		}
 
-		if ($place === 'sidebar') {
-			$value = [
-				'itemtype' => 'https://schema.org/WPSideBar',
-				'itemscope' => 'itemscope',
-			];
-		}
-
 		if ($place === 'footer') {
 			$value = [
 				'itemscope' => '',

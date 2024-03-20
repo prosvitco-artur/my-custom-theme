@@ -348,7 +348,6 @@ $css->put(
 	'--theme-wide-offset: ' . $wideOffset . 'px'
 );
 
-// sidebars
 $sidebar_type = blocksy_get_theme_mod('sidebar_type', 'type-1');
 
 // sidebar width
@@ -449,77 +448,6 @@ if (
 			'default' => [
 				'selector' => '[data-sidebar] > aside',
 				'variable' => 'sidebar-background-color'
-			],
-		],
-		'responsive' => true
-	]);
-}
-
-// Sidebar border
-if ($sidebar_type === 'type-2') {
-	blocksy_output_border([
-		'css' => $css,
-		'tablet_css' => $tablet_css,
-		'mobile_css' => $mobile_css,
-		'selector' => 'aside[data-type="type-2"]',
-		'variableName' => 'theme-border',
-		'value' => blocksy_get_theme_mod('sidebarBorder'),
-		'default' => [
-			'width' => 1,
-			'style' => 'none',
-			'color' => [
-				'color' => 'rgba(224, 229, 235, 0.8)',
-			],
-		],
-		'responsive' => true
-	]);
-
-	blocksy_output_spacing([
-		'css' => $css,
-		'tablet_css' => $tablet_css,
-		'mobile_css' => $mobile_css,
-		'selector' => 'aside[data-type="type-2"]',
-		'property' => 'theme-border-radius',
-		'value' => blocksy_get_theme_mod(
-			'sidebarRadius',
-			blocksy_spacing_value()
-		)
-	]);
-
-	// Sidebar shadow
-	blocksy_output_box_shadow([
-		'css' => $css,
-		'tablet_css' => $tablet_css,
-		'mobile_css' => $mobile_css,
-		'selector' => 'aside[data-type="type-2"]',
-		'value' => blocksy_get_theme_mod('sidebarShadow', blocksy_box_shadow_value([
-			'enable' => true,
-			'h_offset' => 0,
-			'v_offset' => 12,
-			'blur' => 18,
-			'spread' => -6,
-			'inset' => false,
-			'color' => [
-				'color' => 'rgba(34, 56, 101, 0.04)',
-			],
-		])),
-		'responsive' => true
-	]);
-}
-
-if ($sidebar_type === 'type-3') {
-	blocksy_output_border([
-		'css' => $css,
-		'tablet_css' => $tablet_css,
-		'mobile_css' => $mobile_css,
-		'selector' => 'aside[data-type="type-3"]',
-		'variableName' => 'theme-border',
-		'value' => blocksy_get_theme_mod('sidebarDivider'),
-		'default' => [
-			'width' => 1,
-			'style' => 'solid',
-			'color' => [
-				'color' => 'rgba(224, 229, 235, 0.8)',
 			],
 		],
 		'responsive' => true

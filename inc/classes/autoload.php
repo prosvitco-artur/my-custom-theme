@@ -32,7 +32,6 @@ class ThemeAutoloader {
 
 			'BreadcrumbsBuilder' => 'inc/components/breadcrumbs.php',
 
-			'Sidebar' => 'inc/components/sidebar.php',
 			'WooCommerce' => 'inc/components/woocommerce-integration.php',
 
 			'Blocks' => 'inc/components/blocks/blocks.php',
