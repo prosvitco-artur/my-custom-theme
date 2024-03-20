@@ -1,11 +1,4 @@
 <?php
-/**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Blocksy
- */
 
 $prefix = blocksy_manager()->screen->get_prefix();
 
@@ -21,11 +14,6 @@ if ($maybe_custom_output) {
 
 $container_class = 'ct-container';
 
-
-/**
- * Note to code reviewers: This line doesn't need to be escaped.
- * Function blocksy_output_hero_section() used here escapes the value properly.
- */
 echo blocksy_output_hero_section([
 	'type' => 'type-2'
 ]);
@@ -38,14 +26,9 @@ if (! have_posts()) {
 
 ?>
 
-<div class="<?php echo $container_class ?>" <?php echo wp_kses_post(blocksy_sidebar_position_attr()); ?> <?php echo blocksy_get_v_spacing() ?>>
+<div class="<?= $container_class ?>" <?= wp_kses_post(blocksy_sidebar_position_attr()); ?>>
 	<section <?php echo $section_class ?>>
 		<?php
-			/**
-			 * Note to code reviewers: This line doesn't need to be escaped.
-			 * Function blocksy_output_hero_section() used here
-			 * escapes the value properly.
-			 */
 			echo blocksy_output_hero_section([
 				'type' => 'type-1'
 			]);

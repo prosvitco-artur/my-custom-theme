@@ -144,7 +144,6 @@ require get_template_directory() . '/inc/classes/translations-manager.php';
 require get_template_directory() . '/inc/classes/screen-manager.php';
 require get_template_directory() . '/inc/classes/blocksy-blocks-parser.php';
 require get_template_directory() . '/inc/components/global-attrs.php';
-require get_template_directory() . '/inc/components/vertical-spacing.php';
 require get_template_directory() . '/inc/components/customizer-builder.php';
 
 require get_template_directory() . '/inc/components/emoji-scripts.php';

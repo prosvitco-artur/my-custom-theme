@@ -1,11 +1,4 @@
 <?php
-/*
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package Blocksy
- */
 
 if (have_posts()) {
 	the_post();
@@ -30,10 +23,6 @@ if (
 	return;
 }
 
-/**
- * Note to code reviewers: This line doesn't need to be escaped.
- * Function blocksy_output_hero_section() used here escapes the value properly.
- */
 if (apply_filters('blocksy:single:has-default-hero', true)) {
 	echo blocksy_output_hero_section([
 		'type' => 'type-2'
@@ -61,18 +50,11 @@ if ($page_structure === 'none' || blocksy_post_uses_vc()) {
 	<div
 		class="<?php echo trim($container_class) ?>"
 		<?php echo wp_kses_post(blocksy_sidebar_position_attr()); ?>
-		<?php echo $data_container_output; ?>
-		<?php echo blocksy_get_v_spacing() ?>>
+		<?php echo $data_container_output; ?>>
 
 		<?php do_action('blocksy:single:container:top'); ?>
 
-		<?php
-			/**
-			 * Note to code reviewers: This line doesn't need to be escaped.
-			 * Function blocksy_single_content() used here escapes the value properly.
-			 */
-			echo blocksy_single_content();
-		?>
+		<?= blocksy_single_content(); ?>
 
 		<?php get_sidebar(); ?>
 

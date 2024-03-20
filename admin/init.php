@@ -6,7 +6,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-require_once get_template_directory() . '/admin/dashboard/plugins/ct-plugin-manager.php';
 require_once get_template_directory() . '/admin/helpers/jed-locale-data.php';
 
 if (is_admin() && defined('DOING_AJAX') && DOING_AJAX) {

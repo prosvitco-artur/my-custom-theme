@@ -51,14 +51,7 @@ if (! function_exists('blocksy_tutor_lms_course_content_open')) {
 			'array' => true
 		]));
 
-		$attr = array_merge($attr, blocksy_get_v_spacing([
-			'array' => true
-		]));
 
-		/**
-		 * Note to code reviewers: This line doesn't need to be escaped.
-		 * Function blocksy_output_hero_section() used here escapes the value properly.
-		 */
 		if (apply_filters('blocksy:single:has-default-hero', true)) {
 			$resulting_hero = blocksy_output_hero_section([
 				'type' => 'type-2'
@@ -110,10 +103,6 @@ if (! function_exists('blocksy_tutor_lms_content_open')) {
 		}
 
 		$attr = array_merge($attr, blocksy_sidebar_position_attr([
-			'array' => true
-		]));
-
-		$attr = array_merge($attr, blocksy_get_v_spacing([
 			'array' => true
 		]));
 

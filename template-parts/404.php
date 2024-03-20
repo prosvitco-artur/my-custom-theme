@@ -1,4 +1,4 @@
-<div class="ct-container" <?php echo blocksy_get_v_spacing() ?>>
+<div class="ct-container">
 	<section class="ct-no-results">
 
 		<section class="hero-section" data-type="type-1">
