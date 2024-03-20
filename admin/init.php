@@ -8,12 +8,6 @@
 
 require_once get_template_directory() . '/admin/helpers/jed-locale-data.php';
 
-if (is_admin() && defined('DOING_AJAX') && DOING_AJAX) {
-	require_once get_template_directory() . '/admin/dashboard/api.php';
-	require_once get_template_directory() . '/admin/dashboard/plugins/ct-plugin-manager.php';
-	require_once get_template_directory() . '/admin/dashboard/plugins/plugins-api.php';
-}
-
 require get_template_directory() . '/admin/dashboard/core.php';
 require get_template_directory() . '/admin/blocks-editor.php';
 
@@ -142,10 +136,6 @@ add_action(
 		}
 
 		$gradients = get_theme_support('editor-gradient-presets')[0];
-
-		if (function_exists('wp_get_global_settings')) {
-			$gradients = wp_get_global_settings()['color']['gradients']['theme'];
-		}
 
 		wp_localize_script(
 			'ct-options-scripts',

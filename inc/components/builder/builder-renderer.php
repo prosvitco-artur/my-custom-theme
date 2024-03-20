@@ -95,10 +95,6 @@ abstract class Blocksy_Builder_Render {
 					'text',
 					'search-input',
 					'contacts',
-					'widget-area-1',
-					'widget-area-2',
-					'widget-area-3',
-					'widget-area-4'
 				]
 			)
 		) {

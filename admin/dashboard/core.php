@@ -35,13 +35,6 @@ class Blocksy_Dashboard_Page {
 			5
 		);
 
-		if (is_admin() && defined('DOING_AJAX') && DOING_AJAX) {
-			$plugins_api = new Blocksy_Admin_Dashboard_API_Premium_Plugins();
-			$plugins_api->attach_ajax_actions();
-
-			$api = new Blocksy_Admin_Dashboard_API();
-			$api->attach_ajax_actions();
-		}
 
 		if ($this->is_dashboard_page()) {
 			add_action(
