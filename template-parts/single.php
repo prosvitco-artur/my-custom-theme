@@ -4,12 +4,6 @@ if (have_posts()) {
 	the_post();
 }
 
-if (apply_filters('blocksy:single:has-default-hero', true)) {
-	echo blocksy_output_hero_section([
-		'type' => 'type-2'
-	]);
-}
-
 $page_structure = blocksy_get_page_structure();
 
 $container_class = 'ct-container-full';

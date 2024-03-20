@@ -14,10 +14,6 @@ if ($maybe_custom_output) {
 
 $container_class = 'ct-container';
 
-echo blocksy_output_hero_section([
-	'type' => 'type-2'
-]);
-
 $section_class = '';
 
 if (! have_posts()) {
@@ -28,13 +24,7 @@ if (! have_posts()) {
 
 <div class="<?= $container_class ?>" <?= wp_kses_post(blocksy_sidebar_position_attr()); ?>>
 	<section <?php echo $section_class ?>>
-		<?php
-			echo blocksy_output_hero_section([
-				'type' => 'type-1'
-			]);
-
-			echo blocksy_render_archive_cards();
-		?>
+		<?= blocksy_render_archive_cards(); ?>
 	</section>
 
 	<?php get_sidebar(); ?>

@@ -15,19 +15,6 @@ if (! function_exists('blocksy_tutor_lms_content_close')) {
 	}
 }
 
-if (! function_exists('blocksy_tutor_lms_hero_type_1')) {
-	function blocksy_tutor_lms_hero_type_1($result) {
-		return blocksy_output_hero_section([
-			'type' => 'type-1',
-			'elements' => str_replace(
-				'tutor-course-details-header tutor-mb-44',
-				'tutor-course-details-header entry-header',
-				$result
-			)
-		]);
-	}
-}
-
 if (! function_exists('blocksy_tutor_lms_course_content_open')) {
 	function blocksy_tutor_lms_course_content_open() {
 		$page_structure = blocksy_get_page_structure();
@@ -53,21 +40,8 @@ if (! function_exists('blocksy_tutor_lms_course_content_open')) {
 
 
 		if (apply_filters('blocksy:single:has-default-hero', true)) {
-			$resulting_hero = blocksy_output_hero_section([
-				'type' => 'type-2'
-			]);
 
-			if (! empty($resulting_hero)) {
-				echo $resulting_hero;
-
-				add_filter('tutor_course/single/lead_info', function ($res) {
-					return '';
-				});
-
-				add_filter('tutor_course/single/enrolled/lead_info', function ($res) {
-					return '';
-				});
-			} else {
+			
 				add_filter(
 					'tutor_course/single/lead_info',
 					'blocksy_tutor_lms_hero_type_1'
@@ -77,7 +51,7 @@ if (! function_exists('blocksy_tutor_lms_course_content_open')) {
 					'tutor_course/single/enrolled/lead_info',
 					'blocksy_tutor_lms_hero_type_1'
 				);
-			}
+			
 		}
 
 		echo '<div ' . blocksy_attr_to_html($attr) . '>';
@@ -106,18 +80,10 @@ if (! function_exists('blocksy_tutor_lms_content_open')) {
 			'array' => true
 		]));
 
-		if (apply_filters('blocksy:single:has-default-hero', true)) {
-			echo blocksy_output_hero_section([
-				'type' => 'type-2'
-			]);
-		}
 
 		echo '<div ' . blocksy_attr_to_html($attr) . '>';
 
 		echo '<article>';
-		echo blocksy_output_hero_section([
-			'type' => 'type-1'
-		]);
 	}
 }
 

@@ -224,21 +224,6 @@ $when_enabled_general_settings = [
 			'value' => $default_hero_elements,
 			'sync' => [
 				[
-					'selector' => blocksy_prefix_custom_selector('.hero-section', 'hero'),
-					'container_inclusive' => true,
-					'prefix' => $prefix,
-					'render' => function ($args) {
-						echo blocksy_output_hero_section([
-							'type' => blocksy_get_theme_mod(
-								$args['prefix'] . '_hero_section',
-								'type-1'
-							)
-						]);
-					},
-					'prefix_custom' => 'hero'
-				],
-
-				[
 					'prefix' => $prefix,
 					'id' => $prefix . 'hero_elements_heading_tag',
 					'loader_selector' => '.page-title',

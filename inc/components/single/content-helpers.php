@@ -154,20 +154,6 @@ function blocksy_single_content($content = null) {
 				echo blocksy_get_featured_image_output();
 			}
 
-			if (
-				! is_singular([ 'product' ])
-				&&
-				apply_filters('blocksy:single:has-default-hero', true)
-			) {
-				/**
-				 * Note to code reviewers: This line doesn't need to be escaped.
-				 * Function blocksy_output_hero_section() used here escapes the value properly.
-				 */
-				echo blocksy_output_hero_section([
-					'type' => 'type-1'
-				]);
-			}
-
 			if ($featured_image_location === 'below') {
 				echo blocksy_get_featured_image_output();
 			}
