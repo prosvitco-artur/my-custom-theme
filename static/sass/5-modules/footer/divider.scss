@@ -1,14 +1,3 @@
-.ct-footer [data-row] {
-	border-top: var(--theme-border-top);
-	border-bottom: var(--theme-border-bottom);
-
-	> div {
-		border-top: var(--theme-border-top);
-		border-bottom: var(--theme-border-bottom);
-	}
-}
-
-
 // columns divider
 .ct-footer [data-column] {
 	@include media-breakpoint-up (lg) {

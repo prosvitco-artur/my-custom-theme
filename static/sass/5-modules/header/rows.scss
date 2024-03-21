@@ -1,17 +1,4 @@
 #header {
-	[data-row] {
-		position: var(--position, relative);
-		box-shadow: var(--theme-box-shadow);
-		border-top: var(--theme-border-top);
-		border-bottom: var(--theme-border-bottom);
-
-		> div {
-			min-height: var(--shrink-height, var(--height));
-			border-top: var(--theme-border-top);
-			border-bottom: var(--theme-border-bottom);
-		}
-	}
-
 	[data-row*='top'] {
 		z-index: 3;
 	}
