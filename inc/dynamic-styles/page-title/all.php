@@ -9,11 +9,6 @@ $prefixes = [
 	'single_page',
 ];
 
-if (class_exists('WooCommerce')) {
-	$prefixes[] = 'woo_categories';
-	$prefixes[] = 'product';
-}
-
 if (class_exists('bbPress')) {
 	$prefixes[] = 'bbpress_single';
 }

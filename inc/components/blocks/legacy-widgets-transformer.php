@@ -108,12 +108,6 @@ class LegacyWidgetsTransformer {
 			return $posts_migrator->get_block();
 		}
 
-		// Non-posts widgets...
-
-		if ($widget_id === 'blocksy_ct_about_me') {
-			$about_me_migrator = new LegacyWidgetsAboutMeTransformer($data);
-			return $about_me_migrator->get_block();
-		}
 
 		if ($widget_id === 'blocksy_ct_contact_info') {
 			$contact_info_migrator = new LegacyWidgetsContactInfoTransformer($data);

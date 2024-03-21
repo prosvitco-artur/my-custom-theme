@@ -293,16 +293,6 @@ if (! function_exists('blocksy_get_all_image_sizes')) {
 			'medium_large' => __('Medium Large', 'blocksy'),
 			'large' => __('Large', 'blocksy'),
 			'full' => __('Full Size', 'blocksy'),
-			'woocommerce_thumbnail' => __('WooCommerce Thumbnail', 'blocksy'),
-			'woocommerce_single' => __('WooCommerce Single', 'blocksy'),
-			'woocommerce_gallery_thumbnail' => __(
-				'WooCommerce Gallery Thumbnail',
-				'blocksy'
-			),
-			'woocommerce_archive_thumbnail' => __(
-				'WooCommerce Archive Thumbnail',
-				'blocksy'
-			)
 		];
 
 		$all_sizes = get_intermediate_image_sizes();

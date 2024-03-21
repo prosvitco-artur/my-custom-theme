@@ -209,7 +209,6 @@ class Blocksy_Screen_Manager {
 			'categories' => __('Categories', 'blocksy'),
 			'author' => __('Author', 'blocksy'),
 			'search' => __('Search', 'blocksy'),
-			'woo_categories' => __('WooCommerce Categories', 'blocksy'),
 		];
 
 		foreach ($prefixes as $prefix) {

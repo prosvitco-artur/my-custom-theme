@@ -135,7 +135,6 @@ add_action(
 			);
 		}
 
-		$gradients = get_theme_support('editor-gradient-presets')[0];
 
 		wp_localize_script(
 			'ct-options-scripts',
@@ -146,7 +145,6 @@ add_action(
 				'current_palette' => array_keys(
 					blocksy_manager()->colors->get_color_palette()
 				),
-				'gradients' => $gradients,
 				'is_dev_mode' => !! (
 					defined('BLOCKSY_DEVELOPMENT_MODE')
 					&&

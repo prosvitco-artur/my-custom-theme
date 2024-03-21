@@ -109,14 +109,8 @@ function blocksy_dynamic_styles_should_call($args = []) {
 		}
 
 		if ($args['context'] === 'files:global') {
-			if ($args['chunk'] === 'woocommerce') {
-				if (! class_exists('WooCommerce')) {
-					return false;
-				}
-			} else {
-				if ($args['chunk'] !== 'global') {
-					return false;
-				}
+			if ($args['chunk'] !== 'global') {
+				return false;
 			}
 		}
 	}
@@ -124,13 +118,6 @@ function blocksy_dynamic_styles_should_call($args = []) {
 	return true;
 }
 
-/**
- * Evaluate a file with dynamic styles.
- *
- * @param string $name Name of dynamic CSS file.
- * @param array $variables list of data to pass in file.
- * @throws Error When $css not provided.
- */
 function blocksy_theme_get_dynamic_styles($args = []) {
 	$args = wp_parse_args(
 		$args,

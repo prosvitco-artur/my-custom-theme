@@ -10,11 +10,6 @@ $cpt_options = [
 	'page' => true
 ];
 
-if (class_exists('WooCommerce')) {
-	$cpt_choices['product'] = __('Products', 'blocksy');
-	$cpt_options['product'] = true;
-}
-
 $all_cpts = blocksy_manager()->post_types->get_supported_post_types();
 
 if (function_exists('is_bbpress')) {

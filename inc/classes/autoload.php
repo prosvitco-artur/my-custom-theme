@@ -32,13 +32,10 @@ class ThemeAutoloader {
 
 			'BreadcrumbsBuilder' => 'inc/components/breadcrumbs.php',
 
-			'WooCommerce' => 'inc/components/woocommerce-integration.php',
-
 			'Blocks' => 'inc/components/blocks/blocks.php',
 			'GutenbergBlock' => 'inc/components/blocks/gutenberg-block.php',
 			'LegacyWidgetsTransformer' => 'inc/components/blocks/legacy-widgets-transformer.php',
 			'LegacyWidgetsPostsTransformer' => 'inc/components/blocks/legacy/legacy-posts-transformer.php',
-			'LegacyWidgetsAboutMeTransformer' => 'inc/components/blocks/legacy/legacy-about-me-transformer.php',
 			'LegacyWidgetsContactInfoTransformer' => 'inc/components/blocks/legacy/legacy-contact-info-transformer.php',
 			'LegacyWidgetsSocialsTransformer' => 'inc/components/blocks/legacy/legacy-socials-transformer.php',
 			'LegacyWidgetsAdvertisementTransformer' => 'inc/components/blocks/legacy/legacy-advertisement-transformer.php',

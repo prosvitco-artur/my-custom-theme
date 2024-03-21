@@ -83,17 +83,6 @@ blocksy_theme_get_dynamic_styles([
 	])
 ]);
 
-if (class_exists('WooCommerce')) {
-	blocksy_theme_get_dynamic_styles([
-		'name' => 'global/woocommerce',
-		'css' => $css,
-		'mobile_css' => $mobile_css,
-		'tablet_css' => $tablet_css,
-		'context' => $context,
-		'chunk' => 'global'
-	]);
-}
-
 blocksy_theme_get_dynamic_styles([
 	'name' => 'global/forms',
 	'css' => $css,

@@ -142,48 +142,6 @@ $options = [
 		],
 	],
 
-	[
-		function_exists('is_shop') ? [
-			$custom_post_types,
-			'woocommerce_group_title' => [
-				'type' => 'ct-group-title',
-				'title' => __( 'WooCommerce', 'blocksy' ),
-				'priority' => 3,
-			],
-
-			'woocommerce_general' => [
-				'title' => __( 'General', 'blocksy' ),
-				'container' => [
-					'priority' => 3
-				],
-				'options' => blocksy_get_options( 'woocommerce/general-main' ),
-			],
-
-			'woocommerce_posts_archives' => [
-				'title' => __( 'Product Archives', 'blocksy' ),
-				'container' => [
-					'priority' => 3
-				],
-				'options' => blocksy_get_options( 'woocommerce/archive-main' ),
-			],
-
-			'woocommerce_single' => [
-				'title' => __( 'Single Product', 'blocksy' ),
-				'container' => [
-					'priority' => 3,
-				],
-				'options' => blocksy_get_options( 'woocommerce/single-main' ),
-			],
-
-			apply_filters(
-				'blocksy_customizer_options:woocommerce:end',
-				[]
-			)
-		] : [
-			$custom_post_types
-		],
-	],
-
 	apply_filters(
 		'blocksy_misc_end_section_customizer_options',
 		[]

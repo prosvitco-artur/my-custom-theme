@@ -33,15 +33,7 @@ class Blocksy_Manager {
 
 		return self::$instance;
 	}
-
-	public function get_current_template() {
-		if (!$this->current_template) {
-			// return apply_filters('template_include', '__DEFAULT__');
-		}
-
-		return $this->current_template;
-	}
-
+	
 	private function __construct() {
 		$this->early_init();
 	}
@@ -64,10 +56,6 @@ class Blocksy_Manager {
 		$breadcrumbs->mount_shortcode();
 
 		new \Blocksy\SearchModifications();
-
-		if (class_exists('WooCommerce')) {
-			$this->woocommerce = new \Blocksy\WooCommerce();
-		}
 
 		$this->dynamic_css = new \Blocksy\ThemeDynamicCss();
 

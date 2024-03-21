@@ -4,9 +4,17 @@ if (have_posts()) {
 	the_post();
 }
 
+if(is_single() ) {
+	$container_class = 'ct-container';
+} else {
+	$container_class = 'ct-container-full';
+}
+
 ?>
 
-	<div class="ct-container">
+	<div
+		class="<?= $container_class ?>"
+		<?php // echo $data_container_output; ?>>
 
 		<?php do_action('blocksy:single:container:top'); ?>
 
