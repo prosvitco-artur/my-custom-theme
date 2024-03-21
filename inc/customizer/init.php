@@ -273,6 +273,11 @@ add_action(
 			$has_new_widgets = wp_use_widgets_block_editor();
 		}
 
+		$gradients = get_theme_support('editor-gradient-presets')[0];
+
+		if (function_exists('wp_get_global_settings')) {
+			$gradients = wp_get_global_settings()['color']['gradients']['theme'];
+		}
 
 		wp_localize_script(
 			'ct-customizer-controls',
@@ -284,6 +289,7 @@ add_action(
 					->builder
 					->get_data_for_customizer(),
 				'has_new_widgets' => $has_new_widgets,
+				'gradients' => $gradients,
 				'has_child_theme' => $has_child_theme,
 				'is_parent_theme' => ! wp_get_theme()->parent(),
 				'rest_url' => get_rest_url(),

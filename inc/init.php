@@ -27,6 +27,17 @@ add_action('after_setup_theme', function () {
 		apply_filters('blocksy:editor-color-palette', $gutenberg_colors)
 	);
 
+	add_theme_support(
+		'editor-gradient-presets',
+		apply_filters('blocksy:editor-gradient-presets', [
+			[
+				'name' => 'Vivid cyan blue to vivid purple',
+				'gradient' => 'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
+				'slug' => 'vivid-cyan-blue-to-vivid-purple',
+			],
+		])
+	);
+
 	add_theme_support('post-thumbnails');
 
 	add_post_type_support('page', 'excerpt');
@@ -68,17 +79,7 @@ add_action('after_setup_theme', function () {
 	add_theme_support('header-footer-elementor');
 });
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
 add_action('after_setup_theme', function () {
-	// This variable is intended to be overruled from themes.
-	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$GLOBALS['content_width'] = apply_filters(
 		'blocksy_content_width',
 		blocksy_get_theme_mod('maxSiteWidth', 1290)

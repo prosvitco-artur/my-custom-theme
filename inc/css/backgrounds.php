@@ -341,14 +341,6 @@ if (! function_exists('blocksy_output_single_background_css')) {
 			) . '")';
 		}
 
-		if ($args['value']['background_type'] === 'gradient') {
-			$gradient = blocksy_akg('gradient', $args['value'], '');
-
-			if (! empty($gradient)) {
-				$image_url = $gradient;
-			}
-		}
-
 		$backgroundColor['default'] = blocksy_maybe_append_important(
 			$backgroundColor['default'],
 			$args['important']
@@ -382,14 +374,6 @@ if (! function_exists('blocksy_output_single_background_css')) {
 		) {
 			$image_url = blocksy_maybe_append_important($image_url, $args['important']);
 
-			if (
-				$overlayColor['default'] !== 'CT_CSS_SKIP_RULE'
-				&&
-				$args['value']['background_type'] === 'image'
-			) {
-				$image_url = 'linear-gradient(' . $overlayColor['default'] . ', ' . $overlayColor['default'] . '), ' . $image_url;
-			}
-
 			if ($args['conditional_var']) {
 				$image_url = 'var(' . $args['conditional_var'] . ', ' . $image_url . ')';
 			}
@@ -420,8 +404,6 @@ if (! function_exists('blocksy_background_default_value')) {
 				'x' => 0,
 				'y' => 0
 			],
-
-			'gradient' => 'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
 
 			'background_repeat' => 'repeat',
 			'background_size' => 'auto',
