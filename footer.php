@@ -1,17 +1,17 @@
 <?php
-blocksy_after_current_template();
-do_action('blocksy:content:bottom');
+alkima_theme__after_current_template();
+do_action('alkima_theme_content_bottom');
 
 ?>
 	</main>
 
 	<?php
-		do_action('blocksy:content:after');
-		do_action('blocksy:footer:before');
+		do_action('alkima_theme_content_after');
+		do_action('alkima_theme_footer_before');
 
-		blocksy_output_footer();
+		alkima_theme_output_footer();
 
-		do_action('blocksy:footer:after');
+		do_action('alkima_theme_footer_after');
 	?>
 </div>
 

@@ -1,9 +1,7 @@
 <?php
 
-$prefix = blocksy_manager()->screen->get_prefix();
-
 $maybe_custom_output = apply_filters(
-	'blocksy:posts-listing:canvas:custom-output',
+	'alkima_theme_posts_listing_canvas_custom_output',
 	null
 );
 
@@ -23,8 +21,12 @@ if (! have_posts()) {
 ?>
 
 <div class="<?= $container_class ?>">
+<?php if ( function_exists('yoast_breadcrumb')) {
+  yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+}
+?>
 	<section <?php echo $section_class ?>>
-		<?= blocksy_render_archive_cards(); ?>
+		<?= alkima_theme_render_archive_cards(); ?>
 	</section>
 
 	<?php get_sidebar(); ?>

@@ -1,33 +1,33 @@
 <?php
 
 if (have_posts()) {
-	the_post();
+    the_post();
 }
 
-if(is_single() ) {
-	$container_class = 'ct-container';
+if (is_single()) {
+    $container_class = 'ct-container';
 } else {
-	$container_class = 'ct-container-full';
+    $container_class = 'ct-container-full';
 }
 
 ?>
 
-	<div
-		class="<?= $container_class ?>"
-		<?php // echo $data_container_output; ?>>
+<div class="<?= $container_class ?>">
 
-		<?php do_action('blocksy:single:container:top'); ?>
+    <?php do_action('alkima_theme_single_container_top'); ?>
 
-		<?= blocksy_single_content();?>
+    <?php if (function_exists('yoast_breadcrumb') && is_single()):
+        yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
+    endif; ?>
+    
+    <?= alkima_theme_single_content(); ?>
 
-		<?php get_sidebar(); ?>
+    <?php get_sidebar(); ?>
 
-		<?php do_action('blocksy:single:container:bottom'); ?>
-	</div>
+    <?php do_action('alkima_theme_single_container_bottom'); ?>
+</div>
 
 <?php
-
-blocksy_display_page_elements('separated');
 
 have_posts();
 wp_reset_query();
