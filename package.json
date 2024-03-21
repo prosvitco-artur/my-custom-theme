@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "watch": "node-sass static/sass/main.scss -o ./static/public/css/main.css --source-map true --output-style compressed --indent-type tab --indent-width 1 -w",
+    "watch": "node-sass static/sass/main.scss -o ./static/public/css --source-map true --output-style compressed --indent-type tab --indent-width 1 -w",
     "compile": "node-sass sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix"
   },
   "author": "alkima",
