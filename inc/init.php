@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Include admin functions
+ */
+require_once get_template_directory() . '/inc/admin/init.php';
 
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
@@ -15,7 +19,7 @@ add_action('after_setup_theme', function () {
 
     add_theme_support(
         'editor-color-palette',
-        apply_filters('blocksy:editor-color-palette', $gutenberg_colors)
+        apply_filters('alkima_theme_color_palette', $gutenberg_colors)
     );
 });
 
@@ -88,7 +92,7 @@ function alkima_theme_output_footer()
 }
 
 
-function get_color_palette()
+function get_color_palette($mode = 'light')
 {
     $colors = [
         'color-1' => '#fd5a37',
@@ -100,10 +104,13 @@ function get_color_palette()
         'color-7' => '#FAFBFC',
         'color-8' => '#000000',
     ];
+
+    $colors = apply_filters('alkima_theme_color_palette_' . $mode, $colors);
+
     $result = [];
 
     foreach ($colors as $key => $value) {
-        $variable_name = str_replace('color', 'theme-palette-color-', $key);
+        $variable_name = str_replace('color-', 'theme-palette-color-', $key);
 
         $result[$key] = [
             'id' => $key,
@@ -132,13 +139,21 @@ add_action('wp_enqueue_scripts', function () {
 add_action(
     'wp_head',
     function () {
-        $global_styles_descriptor = get_transient(
-            'blocksy_dynamic_styles_descriptor'
-        );
-        
-        // var_dump($global_styles_descriptor);
-        // wp_die();
-        $final_css = ":root {
+
+        // $global_styles_descriptor = get_transient(
+        //     'alkima_theme_dynamic_styles_descriptor'
+        // );
+
+        $final_css = ':root{';
+        foreach(get_color_palette() as $key => $color) {
+            $final_css .= sprintf(
+                '--%s:%s;',
+                $color['variable'],
+                $color['color']
+            );
+        }
+    
+        $final_css .= "
             --theme-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
             --theme-font-weight: 400;
             --theme-text-transform: none;
@@ -154,15 +169,6 @@ add_action(
             --theme-form-field-border-focus-color: var(--theme-palette-color-1);
             --theme-form-selection-field-initial-color: var(--theme-border-color);
             --theme-form-selection-field-active-color: var(--theme-palette-color-1);
-            --theme-palette-color-1: #2872fa;
-            --theme-palette-color-2: #1559ed;
-            --theme-palette-color-3: #3A4F66;
-            --theme-palette-color-4: #192a3d;
-            --theme-palette-color-5: #e1e8ed;
-            --theme-palette-color-6: #f2f5f7;
-            --theme-palette-color-7: #FAFBFC;
-            --theme-palette-color-8: #ffffff;
-            --theme-palette-color-9: #9e6161;
             --theme-text-color: var(--theme-palette-color-3);
             --theme-link-initial-color: var(--theme-palette-color-1);
             --theme-link-hover-color: var(--theme-palette-color-2);
@@ -225,22 +231,70 @@ add_action(
         }";
 
         // if (! empty($global_styles_descriptor['styles']['desktop'])) {
-		// 	$final_css .= $global_styles_descriptor['styles']['desktop'];
-		// }
-
-		// if (! empty(trim($global_styles_descriptor['styles']['tablet']))) {
-		// 	$final_css .= '@media (max-width: 999.98px) {' . $global_styles_descriptor['styles']['tablet'] . '}';
-		// }
-
-		// if (! empty(trim($global_styles_descriptor['styles']['mobile']))) {
-		// 	$final_css .= '@media (max-width: 689.98px) {' . $global_styles_descriptor['styles']['mobile'] . '}';
-		// }
-
-		if (! empty($final_css)) {
-			echo '<style id="ct-main-styles-inline-css">';
-			echo $final_css;
-			echo "</style>\n";
-		}
+        // 	$final_css .= $global_styles_descriptor['styles']['desktop'];
+        // }
+    
+        // if (! empty(trim($global_styles_descriptor['styles']['tablet']))) {
+        // 	$final_css .= '@media (max-width: 999.98px) {' . $global_styles_descriptor['styles']['tablet'] . '}';
+        // }
+    
+        // if (! empty(trim($global_styles_descriptor['styles']['mobile']))) {
+        // 	$final_css .= '@media (max-width: 689.98px) {' . $global_styles_descriptor['styles']['mobile'] . '}';
+        // }
+    
+        if (!empty ($final_css)) {
+            echo '<style id="ct-main-styles-inline-css">';
+            echo $final_css;
+            echo "</style>\n";
+        }
     },
     10
 );
+
+
+function generate_final_css()
+{
+    return generate_final_colors() . generate_final_typography();
+}
+
+function generate_final_colors()
+{
+    $colors = get_color_palette();
+    $final_css = '';
+
+    foreach ($colors as $color) {
+        $final_css .= sprintf(
+            '--%s: %s;',
+            $color['variable'],
+            $color['color']
+        );
+    }
+
+    return $final_css;
+}
+
+function alkima_theme_render_archive_cards()
+{
+    ob_start();
+    if (have_posts()) {
+        while (have_posts()) {
+            the_post();
+            $card_classes = apply_filters('alkima_theme_archive_card_classes', 'ct-archive-card');
+            ?>
+            <article class="<?= $card_classes ?>" <?php do_action('alkima_theme_archive_card_attributes') ?>>
+                <?php do_action('alkima_theme_archive_card_start_title') ?>
+                <?php do_action('alkima_theme_archive_card_before_title') ?>
+                <h2>
+                    <?= the_title() ?>
+                </h2>
+                <?php do_action('alkima_theme_archive_card_after_title') ?>
+                <p>
+                    <?= the_excerpt() ?>
+                </p>
+                <?php do_action('alkima_theme_archive_card_after_content') ?>
+            </article>
+            <?php
+        }
+    }
+    return ob_get_clean();
+}
