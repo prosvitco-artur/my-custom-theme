@@ -95,14 +95,17 @@ function alkima_theme_output_footer()
 function get_color_palette($mode = 'light')
 {
     $colors = [
-        'color-1' => '#fd5a37',
-        'color-2' => '#1559ed',
-        'color-3' => '#3A4F66',
-        'color-4' => '#192a3d',
-        'color-5' => '#e1e8ed',
-        'color-6' => '#f2f5f7',
-        'color-7' => '#FAFBFC',
-        'color-8' => '#000000',
+        'palette-color-1' => '#ad5a37',
+        'palette-color-2' => '#1559ed',
+        'palette-color-3' => '#3A4F66',
+        'palette-color-4' => '#192a3d',
+        'palette-color-5' => '#e1e8ed',
+        'palette-color-6' => '#f2f5f7',
+        'palette-color-7' => '#FAFBFC',
+        'palette-color-8' => '#000000',
+        'button-text-initial-color' => '#ffffff',
+        'button-text-hover-color' => '#ffffff',
+        'selection-text-color' => '#ffffff',
     ];
 
     $colors = apply_filters('alkima_theme_color_palette_' . $mode, $colors);
@@ -110,7 +113,7 @@ function get_color_palette($mode = 'light')
     $result = [];
 
     foreach ($colors as $key => $value) {
-        $variable_name = str_replace('color-', 'theme-palette-color-', $key);
+        $variable_name = 'theme-' . $key;
 
         $result[$key] = [
             'id' => $key,
@@ -127,73 +130,81 @@ function get_color_palette($mode = 'light')
     return $result;
 }
 
+
+function get_additional_styles()
+{
+
+
+    // monospace, Helvetica, Times New Roman, 
+    $theme_styles = [
+        'theme-font-family' => "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+        'theme-font-weight' => '400',
+        'theme-text-transform' => 'none',
+        'theme-text-decoration' => 'none',
+        'theme-font-size' => '16px',
+        'theme-line-height' => '1.65',
+        'theme-letter-spacing' => '0em',
+        'theme-button-font-weight' => '500',
+        'theme-button-font-size' => '15px',
+    
+        'theme-content-spacing' => '1.5em',
+        'theme-button-min-height' => '44px',
+        'theme-button-shadow' => 'none',
+        'theme-button-transform' => 'none',
+        'theme-button-border' => 'none',
+        'theme-button-border-radius' => '3px',
+        'theme-button-padding' => '5px 20px',
+        'theme-normal-container-max-width' => '1235px',
+        'theme-content-vertical-spacing' => '170px',
+        'theme-container-edge-spacing' => '82vw',
+        'theme-narrow-container-max-width' => '400px',
+        'theme-wide-offset' => '130px',
+
+        'theme-text-color' => 'var(--theme-palette-color-3)',
+        'theme-link-initial-color' => 'var(--theme-palette-color-1)',
+        'theme-link-hover-color' => 'var(--theme-palette-color-2)',
+        'theme-selection-background-color' => 'var(--theme-palette-color-1)',
+        'theme-border-color' => 'var(--theme-palette-color-5)',
+        'theme-headings-color' => 'var(--theme-palette-color-4)',
+        'theme-form-field-border-initial-color' => 'var(--theme-border-color)',
+        'theme-form-field-border-focus-color' => 'var(--theme-palette-color-1)',
+        'theme-form-selection-field-initial-color' => 'var(--theme-border-color)',
+        'theme-form-selection-field-active-color' => 'var(--theme-palette-color-1)',
+        'theme-button-background-initial-color' => 'var(--theme-palette-color-1)',
+        'theme-button-background-hover-color' => 'var(--theme-palette-color-2)',
+
+        'has-classic-forms' => 'var(--true)',
+        'has-modern-forms' => 'var(--false)',
+    ];
+    return apply_filters('alkima_theme_additional_styles', $theme_styles);
+}
+
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('alkima-main', get_template_directory_uri() . '/static/public/css/main.css');
 });
-
-
-/**
- * to inline styles in the head
- */
 
 add_action(
     'wp_head',
     function () {
 
-        // $global_styles_descriptor = get_transient(
-        //     'alkima_theme_dynamic_styles_descriptor'
-        // );
-
         $final_css = ':root{';
-        foreach(get_color_palette() as $key => $color) {
+        foreach (get_color_palette() as $key => $color) {
             $final_css .= sprintf(
                 '--%s:%s;',
                 $color['variable'],
                 $color['color']
             );
         }
-    
-        $final_css .= "
-            --theme-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-            --theme-font-weight: 400;
-            --theme-text-transform: none;
-            --theme-text-decoration: none;
-            --theme-font-size: 16px;
-            --theme-line-height: 1.65;
-            --theme-letter-spacing: 0em;
-            --theme-button-font-weight: 500;
-            --theme-button-font-size: 15px;
-            --has-classic-forms: var(--true);
-            --has-modern-forms: var(--false);
-            --theme-form-field-border-initial-color: var(--theme-border-color);
-            --theme-form-field-border-focus-color: var(--theme-palette-color-1);
-            --theme-form-selection-field-initial-color: var(--theme-border-color);
-            --theme-form-selection-field-active-color: var(--theme-palette-color-1);
-            --theme-text-color: var(--theme-palette-color-3);
-            --theme-link-initial-color: var(--theme-palette-color-1);
-            --theme-link-hover-color: var(--theme-palette-color-2);
-            --theme-selection-text-color: #ffffff;
-            --theme-selection-background-color: var(--theme-palette-color-1);
-            --theme-border-color: var(--theme-palette-color-5);
-            --theme-headings-color: var(--theme-palette-color-4);
-            --theme-content-spacing: 1.5em;
-            --theme-button-min-height: 44px;
-            --theme-button-shadow: none;
-            --theme-button-transform: none;
-            --theme-button-text-initial-color: #ffffff;
-            --theme-button-text-hover-color: #ffffff;
-            --theme-button-background-initial-color: var(--theme-palette-color-1);
-            --theme-button-background-hover-color: var(--theme-palette-color-2);
-            --theme-button-border: none;
-            --theme-button-border-radius: 3px;
-            --theme-button-padding: 5px 20px;
-            --theme-normal-container-max-width: 1235px;
-            --theme-content-vertical-spacing: 170px;
-            --theme-container-edge-spacing: 82vw;
-            --theme-narrow-container-max-width: 400px;
-            --theme-wide-offset: 130px;
+        foreach (get_additional_styles() as $key => $value) {
+            $final_css .= sprintf(
+                '--%s:%s;',
+                $key,
+                $value
+            );
         }
-        
+        $final_css .= '}';
+
+        $final_css .= "        
         h1 {
             --theme-font-weight: 700;
             --theme-font-size: 40px;
@@ -230,18 +241,6 @@ add_action(
             --theme-line-height: 1.5;
         }";
 
-        // if (! empty($global_styles_descriptor['styles']['desktop'])) {
-        // 	$final_css .= $global_styles_descriptor['styles']['desktop'];
-        // }
-    
-        // if (! empty(trim($global_styles_descriptor['styles']['tablet']))) {
-        // 	$final_css .= '@media (max-width: 999.98px) {' . $global_styles_descriptor['styles']['tablet'] . '}';
-        // }
-    
-        // if (! empty(trim($global_styles_descriptor['styles']['mobile']))) {
-        // 	$final_css .= '@media (max-width: 689.98px) {' . $global_styles_descriptor['styles']['mobile'] . '}';
-        // }
-    
         if (!empty ($final_css)) {
             echo '<style id="ct-main-styles-inline-css">';
             echo $final_css;
@@ -297,4 +296,60 @@ function alkima_theme_render_archive_cards()
         }
     }
     return ob_get_clean();
+}
+
+function alkima_theme_render_pagination($args = [])
+{
+    global $wp_query;
+
+    $defaults = [
+        'query' => $wp_query,
+        'pagination_type' => 'simple',
+        'last_page_text' => __('No more posts to load', 'blocksy'),
+        'prefix' => 'blog'
+    ];
+
+    $args = wp_parse_args($args, $defaults);
+
+    $current_page = max(1, intval($args['query']->get('paged')));
+    $total_pages = max(1, $args['query']->max_num_pages);
+
+    if ($total_pages <= 1) {
+        return '';
+    }
+
+    $button_output = '';
+
+    if ($args['pagination_type'] === 'load_more' && $current_page !== $total_pages) {
+        $label_button = get_theme_mod($args['prefix'] . '_load_more_label', __('Load More', 'blocksy'));
+        $button_output = '<button class="wp-element-button ct-load-more">' . $label_button . '</button>';
+    }
+
+    $pagination_class = 'ct-pagination';
+
+    $template = '
+    <nav class="' . $pagination_class . '">
+        %1$s
+        %2$s
+    </nav>';
+
+    $paginate_links_args = [
+        'mid_size' => 3,
+        'end_size' => 0,
+        'type' => 'array',
+        'total' => $total_pages,
+        'current' => $current_page,
+        'prev_text' => '<svg width="9px" height="9px" viewBox="0 0 15 15" fill="currentColor"><path d="M10.9,15c-0.2,0-0.4-0.1-0.6-0.2L3.6,8c-0.3-0.3-0.3-0.8,0-1.1l6.6-6.6c0.3-0.3,0.8-0.3,1.1,0c0.3,0.3,0.3,0.8,0,1.1L5.2,7.4l6.2,6.2c0.3,0.3,0.3,0.8,0,1.1C11.3,14.9,11.1,15,10.9,15z"/></svg>' . __('Prev', 'blocksy'),
+        'next_text' => __('Next', 'blocksy') . ' <svg width="9px" height="9px" viewBox="0 0 15 15" fill="currentColor"><path d="M4.1,15c0.2,0,0.4-0.1,0.6-0.2L11.4,8c0.3-0.3,0.3-0.8,0-1.1L4.8,0.2C4.5-0.1,4-0.1,3.7,0.2C3.4,0.5,3.4,1,3.7,1.3l6.1,6.1l-6.2,6.2c-0.3,0.3-0.3,0.8,0,1.1C3.7,14.9,3.9,15,4.1,15z"/></svg>',
+    ];
+
+    $links = paginate_links($paginate_links_args);
+
+    $proper_links = '';
+
+    foreach ($links as $link) {
+        $proper_links .= $link;
+    }
+
+    return sprintf($template, $proper_links, $button_output);
 }

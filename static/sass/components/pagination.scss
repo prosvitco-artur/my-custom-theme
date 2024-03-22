@@ -10,7 +10,6 @@
 	}
 }
 
-// simple & prev next type
 [data-pagination="simple"],
 [data-pagination="next_prev"] {
 	display: grid;
@@ -60,8 +59,6 @@
 	}
 }
 
-
-// simple type
 [data-pagination="simple"] > div {
 	grid-column: 2;
 	text-align: center;
@@ -74,8 +71,6 @@
 	}
 }
 
-
-// load more & infinite type
 [data-pagination="load_more"],
 [data-pagination="infinite_scroll"] {
 	justify-content: center;
