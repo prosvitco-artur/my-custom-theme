@@ -1,5 +1,4 @@
 <?php
-alkima_theme__after_current_template();
 do_action('alkima_theme_content_bottom');
 
 ?>

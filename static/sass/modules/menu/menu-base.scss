@@ -11,8 +11,7 @@
 	}
 }
 
-// first level
-.menu > li > .ct-menu-link {
+.menu>li>.ct-menu-link {
 	white-space: nowrap;
 	justify-content: var(--menu-item-alignment, center);
 	height: var(--menu-item-height, 100%);
@@ -36,7 +35,7 @@
 [data-stretch] {
 	width: 100%;
 
-	> .menu {
+	>.menu {
 		width: inherit;
 		justify-content: space-between;
 	}

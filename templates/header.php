@@ -1,29 +1,27 @@
 <header id="header" class="ct-header" itemtype="https://schema.org/WPHeader">
-    <div data-device="desktop">
-        <div class="ct-container">
-            <?php do_action('alkima_theme_header_before_logo'); ?>
-            <div class="site-branding" data-id="logo" itemscope="itemscope" itemtype="https://schema.org/Organization">
-                <?php if (function_exists('the_custom_logo')) {
-                    the_custom_logo();
-                } ?>
-            </div>
-            <?php do_action('alkima_theme_header_after_logo'); ?>
-            <div data-items="primary">
-                <?php do_action('alkima_theme_header_before_menu'); ?>
-                <?php
-                wp_nav_menu([
-                    'theme_location' => 'primary',
-                    'container' => 'nav',
-                    'container_id' => 'header-menu-1',
-                    'container_class' => 'header-menu-1',
-                    'menu_id' => 'menu-header-menu',
-                    'menu_class' => 'menu',
-                    'depth' => 1,
-                    'fallback_cb' => false
-                ]);
-                ?>
-                <?php do_action('alkima_theme_header_after_menu'); ?>
-            </div>
+    <div class="ct-container">
+        <?php do_action('alkima_theme_header_before_logo'); ?>
+        <div class="site-branding" data-id="logo" itemscope="itemscope" itemtype="https://schema.org/Organization">
+            <?php if (function_exists('the_custom_logo')) {
+                the_custom_logo();
+            } ?>
+        </div>
+        <?php do_action('alkima_theme_header_after_logo'); ?>
+        <div data-items="primary">
+            <?php do_action('alkima_theme_header_before_menu'); ?>
+            <?php
+            wp_nav_menu([
+                'theme_location' => 'menu_1',
+                'container' => 'nav',
+                'container_id' => 'header-menu-1',
+                'container_class' => 'header-menu-1',
+                'menu_id' => 'menu-header-menu',
+                'menu_class' => 'menu',
+                'depth' => 1,
+                'fallback_cb' => false
+            ]);
+            ?>
+            <?php do_action('alkima_theme_header_after_menu'); ?>
         </div>
     </div>
     <div data-device="mobile">

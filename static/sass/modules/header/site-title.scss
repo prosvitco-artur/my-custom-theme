@@ -1,10 +1,7 @@
 .site-branding {
 	display: flex;
 	text-align: var(--horizontal-alignment);
-
-	&:not([data-logo='top']) {
-		align-items: center;
-	}
+	align-items: center;
 }
 
 .site-title {
@@ -78,15 +75,6 @@
 		~ .default-logo {
 			display: none;
 		}
-	}
-}
-
-// logo position
-[data-logo='top'] {
-	flex-direction: column;
-
-	.site-description {
-		margin-top: 0.3em;
 	}
 }
 

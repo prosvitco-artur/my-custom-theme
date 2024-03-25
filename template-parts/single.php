@@ -20,7 +20,13 @@ if (is_single()) {
         yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
     endif; ?>
     
-    <?= alkima_theme_single_content(); ?>
+    <?php
+     ob_start();
+    if (have_posts()) {
+        the_post();
+    }
+    the_content();
+    ?>
 
     <?php get_sidebar(); ?>
 

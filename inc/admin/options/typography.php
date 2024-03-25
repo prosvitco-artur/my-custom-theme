@@ -110,30 +110,6 @@ $options = [
             ],
         ]
     ],
-    'h4' => [
-        'label' => __('H4', 'alkima'),
-        'options' => [
-            'font_family' => [
-                'label' => __('Font Family', 'alkima'),
-                'default' => 'Arial, sans-serif',
-                'choices' => get_theme_font_families()
-            ],
-            'font_size' => [
-                'label' => __('Font Size', 'alkima'),
-                'default' => '24'
-            ],
-            'font_size_tablet' => [
-                'label' => __('Font Size (Tablet)', 'alkima'),
-                'default' => '22'
-            ],
-            'font_size_mob' => [
-                'label' => __('Font Size (Mobile)', 'alkima'),
-                'default' => '20'
-            ],
-        ]
-    ],
-    'h5' => [],
-    'h6' => []
 ];
 
 foreach ($options as $option_key => $option) {
