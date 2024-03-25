@@ -50,6 +50,9 @@ function alkima_theme_output_header()
 
 function alkima_theme_output_footer()
 {
+    // @todo add filter for this 
+    // include get_template_directory() . '/templates/mobile-canvas.php';
+
     include get_template_directory() . '/templates/footer.php';
 }
 
@@ -76,16 +79,15 @@ function get_color_palette($mode = 'light')
     foreach($colors[$mode] as $key => $value){
         $result[$key] = [
             'id' => $key,
-            'slug' => 'palette-color-' . str_replace('color', '', $key),
+            'slug' => 'palette-color-' . str_replace('color', '', $key + 1),
             'color' => $value['color'],
-            'variable' => 'theme-' . $key,
+            'variable' => 'theme-palette-color-' . $key + 1,
             'title' => sprintf(
                 __('Palette Color %s', 'alkima_theme'),
-                str_replace('color', '', $key)
+                str_replace('color', '', $key + 1)
             )
         ];
     }
-
     return $result;
 }
 
@@ -144,6 +146,8 @@ add_action(
 
         $theme_mode = active_theme_is_dark_mode() ? 'dark' : 'light';
         $final_css = ':root{';
+            
+        
         foreach (get_color_palette($theme_mode) as $key => $color) {
             $final_css .= sprintf(
                 '--%s:%s;',

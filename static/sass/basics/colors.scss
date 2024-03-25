@@ -1,6 +1,6 @@
 body {
 	color: var(--theme-text-color);
-
+	background-color: var(--theme-palette-color-8, #f9f9f9);
 	::selection {
 		color: var(--theme-selection-text-color);
 		background-color: var(--theme-selection-background-color);

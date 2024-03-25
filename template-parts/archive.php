@@ -1,21 +1,23 @@
-<?php
-
-$container_class = apply_filters('alkima_theme_archive_container_classes', 'ct-container');
-$section_class = apply_filters('alkima_theme_archive_section_classes', 'ct-archive-section');
-?>
-
-<div class="<?= $container_class ?>">
+<div class="ct-container <?php do_action('alkima_theme_archive_container_classes'); ?> ">
 	<?php do_action('alkima_theme_start_archive_template'); ?>
-	<section class="<?= $section_class ?>">
-
+	<section class="ct-archive-section <?php do_action('alkima_theme_archive_section_classes'); ?>">
+		<?php do_action('alkima_theme_before_archive_loop'); ?>
+		<header class="page-header">
+			<?php
+			the_archive_title('<h1 class="page-title">', '</h1>');
+			the_archive_description('<div class="archive-description">', '</div>');
+			?>
+		</header>
 		<?php
 		if (have_posts()) {
 			while (have_posts()) {
 				the_post();
-				include get_template_directory() . '/templates/single-card.php';
+
+				get_template_part('template-parts/content', get_post_type());
 			}
 		}
 		?>
+		<?php do_action('alkima_theme_after_archive_loop'); ?>
 		<?php
 		$pagination_args = [
 			'pagination_type' => 'simple',
@@ -25,7 +27,9 @@ $section_class = apply_filters('alkima_theme_archive_section_classes', 'ct-archi
 		$pagination_args = apply_filters('alkima_theme_pagination_args', $pagination_args);
 		echo alkima_theme_render_pagination($pagination_args);
 		?>
+		<?php do_action('alkima_theme_after_archive_loop'); ?>
 	</section>
+	<?php do_action('alkima_theme_end_archive_template'); ?>
 
 	<?php get_sidebar(); ?>
 </div>

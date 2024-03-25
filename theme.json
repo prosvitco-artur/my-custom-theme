@@ -5,52 +5,6 @@
 	"settings": {
 
 		"appearanceTools": true,
-
-		"color": {
-			"palette": [
-				{
-					"slug": "color-1",
-					"color": "#ad5a37",
-					"name": "Color 1"
-				},
-				{
-					"slug": "color-2",
-					"color": "#1559ed",
-					"name": "Color 2"
-				},
-				{
-					"slug": "color-3",
-					"color": "#3A4F66",
-					"name": "Color 3"
-				},
-				{
-					"slug": "color-4",
-					"color": "#192a3d",
-					"name": "Color 4"
-				},
-				{
-					"slug": "color-5",
-					"color": "#e1e8ed",
-					"name": "Color 5"
-				},
-				{
-					"slug": "color-6",
-					"color": "#f2f5f7",
-					"name": "Color 6"
-				},
-				{
-					"slug": "color-7",
-					"color": "#FAFBFC",
-					"name": "Color 7"
-				},
-				{
-					"slug": "color-8",
-					"color": "#000000",
-					"name": "Color 8"
-				}
-			]
-		},
-
 		"spacing": {
 			"blockGap": true,
 			"margin": true,

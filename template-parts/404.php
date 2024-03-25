@@ -1,6 +1,5 @@
 <div class="ct-container">
 	<section class="ct-no-results">
-
 		<section class="hero-section" data-type="type-1">
 			<header class="entry-header">
 				<h1 class="page-title" itemprop="headline">
@@ -12,10 +11,8 @@
 				</div>
 			</header>
 		</section>
-
 		<div class="entry-content">
 			<?php get_search_form(); ?>
 		</div>
-
 	</section>
 </div>
