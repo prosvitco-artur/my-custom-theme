@@ -3,13 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "watch": "node-sass static/sass/main.scss -o ./static/public/css --source-map true --output-style compressed --indent-type tab --indent-width 1 -w",
-    "compile": "node-sass sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix"
+    "start": "webpack --watch",
+    "build": "webpack"
   },
   "author": "alkima",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^9.0.0"
+    "@wordpress/components": "^27.2.0",
+    "@wordpress/date": "^4.54.0",
+    "@wordpress/i18n": "^4.54.0",
+    "@wordpress/icons": "^9.45.0",
+    "node-sass": "^9.0.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "bootstrap": "5.3.3"
