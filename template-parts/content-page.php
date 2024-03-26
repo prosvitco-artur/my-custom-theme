@@ -1,4 +1,4 @@
-<div class="ct-container-full">
+<div class="container">
 
     <?php do_action('alkima_theme_single_container_top'); ?>
 

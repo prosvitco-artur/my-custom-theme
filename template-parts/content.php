@@ -4,15 +4,10 @@ if (have_posts()) {
     the_post();
 }
 
-if (is_single()) {
-    $container_class = 'ct-container';
-} else {
-    $container_class = 'ct-container';
-}
 
 ?>
 
-<div class="<?= $container_class ?> <?php do_action('alkima_theme_single_container_classes'); ?>">
+<div class="container <?php do_action('alkima_theme_single_container_classes'); ?>">
 
     <?php do_action('alkima_theme_single_container_top'); ?>
 

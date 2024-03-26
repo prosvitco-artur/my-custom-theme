@@ -43,6 +43,8 @@ require_once get_template_directory() . '/inc/admin/init.php';
 
 require_once get_template_directory() . '/inc/public/pagination.php';
 
+require_once get_template_directory() . '/inc/public/class-alkima-bootstrap-walker.php';
+
 function alkima_theme_output_header()
 {
     include get_template_directory() . '/templates/header.php';
@@ -58,6 +60,12 @@ function alkima_theme_output_footer()
 
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('alkima-main', get_template_directory_uri() . '/static/public/css/main.css');
+
+    // @todo remove this later
+    // wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
+
+    wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js');
+
 });
 
 function active_theme_is_dark_mode()

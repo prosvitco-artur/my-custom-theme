@@ -1,13 +1,13 @@
-<div class="ct-container <?php do_action('alkima_theme_archive_container_classes'); ?> ">
+<div class="container <?php do_action('alkima_theme_archive_container_classes'); ?> ">
 	<?php do_action('alkima_theme_start_archive_template'); ?>
 	<section class="ct-archive-section <?php do_action('alkima_theme_archive_section_classes'); ?>">
 		<?php do_action('alkima_theme_before_archive_loop'); ?>
-		<header class="page-header">
+		<div class="page-header">
 			<?php
 			the_archive_title('<h1 class="page-title">', '</h1>');
 			the_archive_description('<div class="archive-description">', '</div>');
 			?>
-		</header>
+		</div>
 		<?php
 		if (have_posts()) {
 			while (have_posts()) {

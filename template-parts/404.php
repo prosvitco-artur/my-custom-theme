@@ -1,4 +1,4 @@
-<div class="ct-container">
+<div class="container">
 	<section class="ct-no-results">
 		<section class="hero-section" data-type="type-1">
 			<header class="entry-header">

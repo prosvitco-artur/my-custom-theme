@@ -1,9 +1,0 @@
-{
-	"version": 3,
-	"file": "footer-container.css",
-	"sources": [
-		"../../sass/modules/footer/footer-container.scss"
-	],
-	"names": [],
-	"mappings": "AAAA,AAAA,UAAU,AAAC,CACV,IAAI,CAAE,QAAQ,CACd,OAAO,CAAE,+BAA+B,CAMxC,AARD,AAIC,UAJS,AAIR,aAAa,AAAC,CACd,aAAa,CAAE,qCAAqC,CACpD,aAAa,CAAE,qCAAqC,CACpD"
-}
