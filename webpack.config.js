@@ -1,11 +1,12 @@
 const path = require('path');
 
 module.exports = {
-    entry: './static/public/index.js',
+    entry: './static/js/public/main.js',
     output: {
-        filename: 'bundle.js',
+        filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    mode: 'production',
     module: {
         rules: [
             {
