@@ -1,58 +1,108 @@
 <?php
 
+defined('ABSPATH') || exit;
 
-function alkima_theme_render_pagination($args = [])
+if (!function_exists('alkima_theme_render_pagination')):
+
+    function alkima_theme_render_pagination($pages = '', $range = 2)
+    {
+        $showitems = ($range * 2) + 1;
+        global $paged;
+        if (empty ($paged))
+            $paged = 1;
+        if ($pages == '') {
+            global $wp_query;
+            $pages = $wp_query->max_num_pages;
+
+            if (!$pages) {
+                $pages = 1;
+            }
+        }
+        ob_start();
+        ?>
+
+        <nav aria-label="Page navigation">
+            <span class="visually-hidden">
+                <?php esc_html_e('Page navigation', 'bootscore'); ?>
+            </span>
+            <ul class="pagination justify-content-center mb-4">
+
+                <?php if ($paged > 2 && $paged > $range + 1 && $showitems < $pages): ?>
+                    <li class="page-item">
+                        <a class="page-link" href="<?php echo get_pagenum_link(1); ?>"
+                            aria-label="<?php esc_html_e('First Page', 'bootscore'); ?>">&laquo;
+                        </a>
+                    </li>
+                <?php endif; ?>
+
+                <?php if ($paged > 1 && $showitems < $pages): ?>
+                    <li class="page-item">
+                        <a class="page-link" href="<?php echo get_pagenum_link($paged - 1); ?>"
+                            aria-label="<?php esc_html_e('Previous Page', 'bootscore'); ?>">
+                            &lsaquo;
+                        </a>
+                    </li>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $pages; $i++): ?>
+                    <?php if (1 != $pages && (!($i >= $paged + $range + 1 || $i <= $paged - $range - 1) || $pages <= $showitems)): ?>
+                        <?php if ($paged == $i): ?>
+                            <li class="page-item active">
+                                <span class="page-link">
+                                    <span class="visually-hidden">
+                                        <?php echo __('Current Page', 'bootscore') . ' ' . $i; ?>
+                                    </span>
+                                    <?php echo $i; ?>
+                                </span>
+                            </li>
+                        <?php else: ?>
+                            <li class="page-item"><a class="page-link" href="<?php echo get_pagenum_link($i); ?>">
+                                    <span class="visually-hidden">
+                                        <?php echo __('Page', 'bootscore') . ' ' . $i; ?>
+                                    </span>
+                                    <?php echo $i; ?>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                <?php endfor; ?>
+
+                <?php if ($paged < $pages && $showitems < $pages): ?>
+                    <li class="page-item">
+                        <a class="page-link" href="<?php echo get_pagenum_link(($paged === 0 ? 1 : $paged) + 1); ?>"
+                            aria-label="<?php esc_html_e('Next Page', 'bootscore'); ?>">
+                            &rsaquo;
+                        </a>
+                    </li>
+                <?php endif; ?>
+
+                <?php if ($paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages): ?>
+                    <li class="page-item">
+                        <a class="page-link" href="<?php echo get_pagenum_link($pages); ?>"
+                            aria-label="<?php esc_html_e('Last Page', 'bootscore'); ?>">
+                            &raquo;
+                        </a>
+                    </li>
+                <?php endif; ?>
+
+            </ul>
+        </nav>
+
+        <?php
+        echo ob_get_clean();
+
+    }
+
+endif;
+
+
+add_filter('next_post_link', 'post_link_attributes');
+add_filter('previous_post_link', 'post_link_attributes');
+
+function post_link_attributes($output)
 {
-    global $wp_query;
+    $code = 'class="page-link"';
 
-    $defaults = [
-        'query' => $wp_query,
-        'pagination_type' => 'simple',
-        'last_page_text' => __('No more posts to load', 'alkima_theme'),
-        'prefix' => 'blog'
-    ];
-
-    $args = wp_parse_args($args, $defaults);
-
-    $current_page = max(1, intval($args['query']->get('paged')));
-    $total_pages = max(1, $args['query']->max_num_pages);
-
-    if ($total_pages <= 1) {
-        return '';
-    }
-
-    $button_output = '';
-
-    if ($args['pagination_type'] === 'load_more' && $current_page !== $total_pages) {
-        $label_button = get_theme_mod($args['prefix'] . '_load_more_label', __('Load More', 'alkima_theme'));
-        $button_output = '<button class="wp-element-button ct-load-more">' . $label_button . '</button>';
-    }
-
-    $pagination_class = 'ct-pagination';
-
-    $template = '
-    <nav class="' . $pagination_class . '">
-        %1$s
-        %2$s
-    </nav>';
-
-    $paginate_links_args = [
-        'mid_size' => 3,
-        'end_size' => 0,
-        'type' => 'array',
-        'total' => $total_pages,
-        'current' => $current_page,
-        'prev_text' => '<svg width="9px" height="9px" viewBox="0 0 15 15" fill="currentColor"><path d="M10.9,15c-0.2,0-0.4-0.1-0.6-0.2L3.6,8c-0.3-0.3-0.3-0.8,0-1.1l6.6-6.6c0.3-0.3,0.8-0.3,1.1,0c0.3,0.3,0.3,0.8,0,1.1L5.2,7.4l6.2,6.2c0.3,0.3,0.3,0.8,0,1.1C11.3,14.9,11.1,15,10.9,15z"/></svg>' . __('Prev', 'alkima_theme'),
-        'next_text' => __('Next', 'alkima_theme') . ' <svg width="9px" height="9px" viewBox="0 0 15 15" fill="currentColor"><path d="M4.1,15c0.2,0,0.4-0.1,0.6-0.2L11.4,8c0.3-0.3,0.3-0.8,0-1.1L4.8,0.2C4.5-0.1,4-0.1,3.7,0.2C3.4,0.5,3.4,1,3.7,1.3l6.1,6.1l-6.2,6.2c-0.3,0.3-0.3,0.8,0,1.1C3.7,14.9,3.9,15,4.1,15z"/></svg>',
-    ];
-
-    $links = paginate_links($paginate_links_args);
-
-    $proper_links = '';
-
-    foreach ($links as $link) {
-        $proper_links .= $link;
-    }
-
-    return sprintf($template, $proper_links, $button_output);
+    return str_replace('<a href=', '<a ' . $code . ' href=', $output);
 }
+?>

@@ -36,6 +36,10 @@
                             ]
                         );
                         ?>
+                        <div class="dark-mode-switch form-check form-switch">
+                            <input class="form-check-input cursor-pointer" type="checkbox" id="bs-theme-switcher">
+                            <label class="form-check-label visually-hidden" for="bs-theme-switcher"><?php _e('Toggle theme', 'bootscore'); ?></label>
+                        </div>
                     </div>
                     <?php do_action('alkima_theme_header_after_menu'); ?>
                 </div>

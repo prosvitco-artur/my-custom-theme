@@ -1,4 +1,4 @@
-<div class="container <?php do_action('alkima_theme_archive_container_classes'); ?> ">
+<div class="container <?php do_action('alkima_theme_archive_container_classes'); ?>" id="content">
 	<?php do_action('alkima_theme_start_archive_template'); ?>
 	<section class="ct-archive-section <?php do_action('alkima_theme_archive_section_classes'); ?>">
 		<?php do_action('alkima_theme_before_archive_loop'); ?>
@@ -18,15 +18,7 @@
 		}
 		?>
 		<?php do_action('alkima_theme_after_archive_loop'); ?>
-		<?php
-		$pagination_args = [
-			'pagination_type' => 'simple',
-			'last_page_text' => __('No more posts to load', 'alkima_theme'),
-			'prefix' => 'blog',
-		];
-		$pagination_args = apply_filters('alkima_theme_pagination_args', $pagination_args);
-		echo alkima_theme_render_pagination($pagination_args);
-		?>
+		<?php alkima_theme_render_pagination(); ?>
 		<?php do_action('alkima_theme_after_archive_loop'); ?>
 	</section>
 	<?php do_action('alkima_theme_end_archive_template'); ?>
