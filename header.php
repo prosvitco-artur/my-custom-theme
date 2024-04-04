@@ -1,6 +1,5 @@
 <!doctype html>
-<html <?php language_attributes(); ?>>
-
+<html <?php language_attributes(); ?> <?php do_action('alkima_theme_html_attr') ?>>
 <head>
 	<?php do_action('alkima_theme_head_start') ?>
 

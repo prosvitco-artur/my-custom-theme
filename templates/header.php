@@ -1,6 +1,3 @@
-
-
-
 <header id="masthead" class="site-header">
     <div class="fixed-top bg-body-tertiary">
         <nav id="nav-main" class="navbar navbar-expand-lg">
@@ -21,8 +18,8 @@
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
-                    <?php do_action('alkima_theme_header_before_menu'); ?>
                     <div class="offcanvas-body">
+                        <?php do_action('alkima_theme_header_before_menu'); ?>
                         <?php
                         wp_nav_menu(
                             [
@@ -36,12 +33,8 @@
                             ]
                         );
                         ?>
-                        <div class="dark-mode-switch form-check form-switch">
-                            <input class="form-check-input cursor-pointer" type="checkbox" id="bs-theme-switcher">
-                            <label class="form-check-label visually-hidden" for="bs-theme-switcher"><?php _e('Toggle theme', 'bootscore'); ?></label>
-                        </div>
+                        <?php do_action('alkima_theme_header_after_menu'); ?>
                     </div>
-                    <?php do_action('alkima_theme_header_after_menu'); ?>
                 </div>
 
                 <div class="header-actions d-flex align-items-center">
