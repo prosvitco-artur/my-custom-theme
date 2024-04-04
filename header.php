@@ -1,5 +1,6 @@
 <!doctype html>
 <html <?php language_attributes(); ?> <?php do_action('alkima_theme_html_attr') ?>>
+
 <head>
 	<?php do_action('alkima_theme_head_start') ?>
 
@@ -19,7 +20,9 @@
 
 	<div id="page">
 		<?php do_action('alkima_theme_header_before'); ?>
-		<?= alkima_theme_output_header(); ?>
+		<?php
+			include get_template_directory() . '/templates/header.php';
+		?>
 
 		<?php do_action('alkima_theme_header_after'); ?>
 		<?php do_action('alkima_theme_content_before'); ?>

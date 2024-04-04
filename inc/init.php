@@ -33,39 +33,14 @@ add_action('after_setup_theme', function () {
     }
 });
 
-
-
-/**
- * Include admin functions
- */
 require_once get_template_directory() . '/inc/admin/init.php';
-
 
 require_once get_template_directory() . '/inc/public/pagination.php';
 
-require_once get_template_directory() . '/inc/public/class-alkima-bootstrap-walker.php';
+require_once get_template_directory() . '/inc/public/classes/init.php';
 
+require_once get_template_directory() . '/inc/public/enqueue.php';
 
-function alkima_theme_output_header()
-{
-    include get_template_directory() . '/templates/header.php';
-}
-
-function alkima_theme_output_footer()
-{
-    include get_template_directory() . '/templates/footer.php';
-}
-
-add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('alkima-main', get_template_directory_uri() . '/dist/main.css');
-
-    // @todo remove this later
-    // wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
-
-    // wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', [], false, true);
-    wp_enqueue_script('bootstrap', get_template_directory_uri() . '/dist/main.js', [], false, true);
-
-});
 
 function active_theme_is_dark_mode()
 {
@@ -82,8 +57,8 @@ function get_color_palette($mode = 'light')
 
     $variables = json_decode($json, true);
     $colors = $variables['colors'];
-   
-    foreach($colors[$mode] as $key => $value){
+
+    foreach ($colors[$mode] as $key => $value) {
         $result[$key] = [
             'id' => $key,
             'slug' => 'palette-color-' . str_replace('color', '', $key + 1),
@@ -153,8 +128,8 @@ add_action(
 
         $theme_mode = active_theme_is_dark_mode() ? 'dark' : 'light';
         $final_css = ':root{';
-            
-        
+
+
         foreach (get_color_palette($theme_mode) as $key => $color) {
             $final_css .= sprintf(
                 '--%s:%s;',

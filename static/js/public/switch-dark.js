@@ -29,12 +29,18 @@
 
     const setTheme = (theme) => {
         document.documentElement.setAttribute('data-bs-theme', theme);
-        setCookie('theme', theme, 365); // Зберігаємо тему в куках на 365 днів
+        setCookie('theme', theme, 365);
     };
 
     const showActiveTheme = (theme) => {
         const themeToggler = document.querySelector('#toggleDarkMode');
         if (!themeToggler) return;
+        
+        if (theme === 'dark' && themeToggler.checked === false){
+            themeToggler.checked = true;
+        }
+
+
 
         const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`);
 
@@ -50,6 +56,7 @@
     };
 
     const toggleTheme = () => {
+        console.log('Toggle theme');
         const currentTheme = document.documentElement.getAttribute('data-bs-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         setTheme(newTheme);

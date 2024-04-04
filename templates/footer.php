@@ -23,7 +23,7 @@ $container_menu_classes = apply_filters('alkima_theme_footer_container_classes',
                     'fallback_cb' => false,
                     'items_wrap' => '<ul id="footer-menu" class="nav %2$s">%3$s</ul>',
                     'depth' => 1,
-                    'walker' => new Alkima_Bootstrap_Walker()
+                    'walker' => new AlkimaBootstrapWalker()
                 ]
             ); ?>
         </div>

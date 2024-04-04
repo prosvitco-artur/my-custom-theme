@@ -29,7 +29,7 @@
                                 'fallback_cb' => false,
                                 'items_wrap' => '<ul class="navbar-nav ms-auto %2$s">%3$s</ul>',
                                 'depth' => 2,
-                                'walker' => new Alkima_Bootstrap_Walker(),
+                                'walker' => new AlkimaBootstrapWalker(),
                             ]
                         );
                         ?>

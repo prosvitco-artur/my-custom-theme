@@ -3,18 +3,6 @@
 require get_template_directory() . '/inc/init.php';
 
 
-
-function add_specific_menu_location_atts($atts, $item, $args)
-{
-
-  if ($args->menu->slug == 'header-menu') {
-    $atts['class'] = 'ct-menu-link';
-  }
-  return $atts;
-}
-add_filter('nav_menu_link_attributes', 'add_specific_menu_location_atts', 10, 3);
-
-
 add_filter('alkima_theme_show_yoast_breadcrumb', function ($show_breadcrumb) {
   if (is_front_page()) {
     return false;
@@ -35,11 +23,11 @@ function alkima_set_theme_mode()
 add_action('alkima_theme_header_after_menu', 'alkima_theme_dark_mode_switch');
 function alkima_theme_dark_mode_switch()
 { ?>
-  <div class="dark-mode-switch form-check form-switch">
-    <input class="form-check-input cursor-pointer" type="checkbox" id="toggleDarkMode" <?= (isset($_COOKIE['theme']) && $_COOKIE['theme'] === 'dark') ? 'checked' : ''; ?>>
-    <label class="form-check-label visually-hidden" for="toggleDarkMode">
-      <?php _e('Toggle theme', 'alkima_theme'); ?>
-    </label>
-  </div>
+    <div class="dark-mode-switch form-check form-switch">
+      <input class="form-check-input cursor-pointer" type="checkbox" id="toggleDarkMode" <?= (isset($_COOKIE['theme']) && $_COOKIE['theme'] === 'dark') ? 'checked' : ''; ?>>
+      <label class="form-check-label visually-hidden" for="toggleDarkMode">
+        <?php _e('Toggle theme', 'alkima_theme'); ?>
+      </label>
+    </div>
   <?php
 }
