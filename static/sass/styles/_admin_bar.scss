@@ -1,4 +1,4 @@
-@include media-breakpoint-down(md) {
+@media screen and (max-width: 782px) {
    #wpadminbar {
      position: fixed;
    }

@@ -1,69 +1,83 @@
-<?php
+<?php 
+class Alkima_Theme_Settings {
+    
+    public function __construct() {
+        add_action('admin_menu', [$this, 'add_admin_menu']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
+        add_action('wp_ajax_save_header_footer_settings', [$this, 'save_settings']);
+        add_action('init', [$this, 'render_settings']);
+    }
 
-add_action('admin_menu', 'alkima_theme_add_admin_menu');
-function alkima_theme_add_admin_menu()
-{
-    add_theme_page('Headers and Footers', 'Headers and Footers', 'manage_options', 'alkima_theme_options', 'alkima_theme_options_page');
+    public function add_admin_menu() {
+        add_theme_page('Headers and Footers', 'Headers and Footers', 'manage_options', 'alkima_theme_options', [$this, 'options_page']);
+    }
+
+    public function options_page() {
+        ?>
+        <div class="container">
+            <div id="react-root"></div>
+        </div>
+        <?php
+    }
+
+    public function enqueue_admin_scripts() {
+        $screen = get_current_screen();
+        if ($screen->id === 'appearance_page_alkima_theme_options') {
+            wp_enqueue_style('header-footer-admin', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
+            wp_enqueue_script('header-footer-admin', get_template_directory_uri() . '/dist/admin.js', [], null, true);
+    
+            $data_to_pass = [
+                'headerSettings' => get_option('alkima_theme_header_code') ?: '',
+                'bodySettings' => get_option('alkima_theme_body_code') ?: '',
+                'footerSettings' => get_option('alkima_theme_footer_code') ?: '',
+            ];
+    
+            wp_localize_script('header-footer-admin', 'token', ['nonce' => wp_create_nonce('header_footer_nonce')]);
+            wp_localize_script('header-footer-admin', 'wpData', $data_to_pass);
+        }
+    }
+    
+
+    public function save_settings() {
+        check_ajax_referer('header_footer_nonce', 'nonce');
+    
+        $settings_to_save = [
+            'header' => isset($_POST['headerSettings']) ? json_decode(stripslashes($_POST['headerSettings']), true) : [],
+            'body' => isset($_POST['bodySettings']) ? json_decode(stripslashes($_POST['bodySettings']), true) : [],
+            'footer' => isset($_POST['footerSettings']) ? json_decode(stripslashes($_POST['footerSettings']), true) : [],
+        ];
+    
+        foreach ($settings_to_save as $type => $settings) {
+            $settings_to_save[$type] = array_filter($settings, function($setting) {
+                return !empty($setting['code']);
+            });
+        }
+    
+        foreach ($settings_to_save as $type => $settings) {
+            update_option('alkima_theme_' . $type . '_code', $settings);
+        }
+    
+        wp_send_json_success('Settings saved successfully');
+    }
+
+    public function render_settings() {
+        $this->render_code_settings('header', 'wp_head');
+        $this->render_code_settings('body', 'wp_body_open');
+        $this->render_code_settings('footer', 'wp_footer');
+    }
+
+    private function render_code_settings($setting_key, $hook) {
+        $settings = get_option("alkima_theme_{$setting_key}_code");
+        if (!empty($settings)) {
+            foreach ($settings as $setting) {
+                if (!empty($setting['code'])) {
+                    add_action($hook, function () use ($setting) {
+                        echo $setting['code'];
+                    }, isset($setting['priority']) ? $setting['priority'] : 10);
+                }
+            }
+        }
+    }
 }
 
-function alkima_theme_options_page()
-{
-    ?>
-    <div class="wrap">
-        <h2>WP Headers and Footers</h2>
-        <form method="post" action="options.php">
-            <?php
-            settings_fields('alkima_theme_options');
-            do_settings_sections('alkima_theme_options');
-            submit_button();
-            ?>
-        </form>
-    </div>
-<?php
-}
-
-add_action('admin_init', 'alkima_theme_admin_init');
-function alkima_theme_admin_init()
-{
-    register_setting('alkima_theme_options', 'alkima_theme_options', 'alkima_theme_options_validate');
-
-    add_settings_section('alkima_theme_main', 'Main Settings', 'alkima_theme_section_text', 'alkima_theme_options');
-    add_settings_field('alkima_theme_header', 'Header', 'alkima_theme_setting_header', 'alkima_theme_options', 'alkima_theme_main');
-    add_settings_field('alkima_theme_footer', 'Footer', 'alkima_theme_setting_footer', 'alkima_theme_options', 'alkima_theme_main');
-}
-
-function alkima_theme_options_validate($input)
-{
-    return $input;
-}
-
-function alkima_theme_section_text()
-{
-    echo '<p>Enter the header and footer code below.</p>';
-}
-
-function alkima_theme_setting_header()
-{
-    $options = get_option('alkima_theme_options');
-    echo "<textarea id='alkima_theme_header' name='alkima_theme_options[header]' rows='10' cols='50'>{$options['header']}</textarea>";
-}
-
-function alkima_theme_setting_footer()
-{
-    $options = get_option('alkima_theme_options');
-    echo "<textarea id='alkima_theme_footer' name='alkima_theme_options[footer]' rows='10' cols='50'>{$options['footer']}</textarea>";
-}
-
-add_action('wp_head', 'alkima_theme_header_code');
-function alkima_theme_header_code()
-{
-    $options = get_option('alkima_theme_options');
-    echo $options['header'];
-}
-
-add_action('wp_footer', 'alkima_theme_footer_code');
-function alkima_theme_footer_code()
-{
-    $options = get_option('alkima_theme_options');
-    echo $options['footer'];
-}
+new Alkima_Theme_Settings();

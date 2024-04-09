@@ -3,13 +3,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
-        bootstrap: './static/js/public/bootstrap.js',
+        // main: './static/js/public/main.js',
         switchDark: './static/js/public/switch-dark.js',
-        styles: './static/js/public/styles.js'
+        admin: './static/js/admin/admin.js'
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'dist'),
     },
     mode: 'production',
     module: {
@@ -35,7 +35,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
             }
@@ -43,7 +43,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'main.css',
+            filename: '[name].css',
         }),
     ],
 };
