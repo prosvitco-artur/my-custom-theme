@@ -7,11 +7,13 @@ if (have_posts()) {
 
 ?>
 
-<div class="<?php do_action('alkima_theme_single_container_classes'); ?>">
+<div class="container pt-5 <?php do_action('alkima_theme_single_container_classes'); ?>">
 
     <?php do_action('alkima_theme_single_container_top'); ?>
 
     <?php
+
+    the_title('<div class="pt-5"><h1>', '</h1></div>');
     if (function_exists('yoast_breadcrumb') && apply_filters('alkima_theme_show_yoast_breadcrumb', true)):
         yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
     endif;

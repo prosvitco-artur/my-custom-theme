@@ -24,7 +24,7 @@ class Alkima_Theme_Settings {
         $screen = get_current_screen();
         if ($screen->id === 'appearance_page_alkima_theme_options') {
             wp_enqueue_style('header-footer-admin', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
-            wp_enqueue_script('header-footer-admin', get_template_directory_uri() . '/dist/admin.js', [], null, true);
+            wp_enqueue_script('header-footer-admin', get_template_directory_uri() . '/build/admin/js/admin.js', [], null, true);
     
             $data_to_pass = [
                 'headerSettings' => get_option('alkima_theme_header_code') ?: '',

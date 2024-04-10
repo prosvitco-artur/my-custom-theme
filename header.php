@@ -27,5 +27,5 @@
 		<?php do_action('alkima_theme_header_after'); ?>
 		<?php do_action('alkima_theme_content_before'); ?>
 
-		<main class="site-content container py-5 mt-4" <?php do_action('alkima_theme_content_attr') ?>>
+		<main class="site-content" <?php do_action('alkima_theme_content_attr') ?>>
 			<?php do_action('alkima_theme_content_top'); ?>

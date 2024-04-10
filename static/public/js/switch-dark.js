@@ -56,7 +56,6 @@
     };
 
     const toggleTheme = () => {
-        console.log('Toggle theme');
         const currentTheme = document.documentElement.getAttribute('data-bs-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         setTheme(newTheme);
@@ -70,7 +69,6 @@
 
     const handleThemeChange = () => {
         const preferredTheme = getPreferredTheme();
-        console.log('Theme changed to', preferredTheme);
         setTheme(preferredTheme);
         showActiveTheme(preferredTheme);
     };

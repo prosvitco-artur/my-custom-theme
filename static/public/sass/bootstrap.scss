@@ -1,3 +1,9 @@
+$custom-container-sm: 540px;
+$custom-container-md: 720px;
+$custom-container-lg: 960px;
+$custom-container-xl: 1140px;
+$custom-container-xxl: 1320px;
+
 @import "/node_modules/bootstrap/scss/functions";
 
 @import "/node_modules/bootstrap/scss/variables";
@@ -24,14 +30,40 @@
 
 @import "/node_modules/bootstrap/scss/pagination";
 
+
+
+
 [data-bs-theme=dark] {
-    body {
-        background-color: var(--wp--preset--color--dark, --bs-body-color);
+    body,
+    div {
+        --bs-body-bg: var(--wp--preset--color--dark, --bs-body-color);
+        --stk-block-wide-width: 1320px;
+    }
+
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        --bs-text-color: var(--wp--preset--color--light, --bs-body-color);
     }
 }
 
 [data-bs-theme=light] {
-    body {
-        background-color: var(--wp--preset--color--light, --bs-body-color);
+    body,
+    div {
+        --bs-body-bg: var(--wp--preset--color--light, --bs-body-color);
+        --stk-block-wide-width: 1320px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        --bs-text-color: var(--wp--preset--color--dark, --bs-body-color);
     }
 }

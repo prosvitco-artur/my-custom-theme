@@ -42,6 +42,16 @@
 					"slug": "dark",
 					"color": "#1E284C",
 					"name": "Dark"
+				},
+				{
+					"slug": "theme-bg",
+					"color": "var(--bs-body-bg)",
+					"name": "Mode Background"
+				},
+				{
+					"slug": "theme-text",
+					"color": "var(--bs-text-color)",
+					"name": "Mode Text"
 				}
 			]
 		},
@@ -58,11 +68,6 @@
 				"vh",
 				"vw"
 			]
-		},
-		"layout": {
-			"contentSize": "var(--theme-block-max-width)",
-			"wideSize": "var(--theme-block-wide-max-width)",
-			"fullSize": "none"
 		},
 		"typography": {
 			"fluid": true,

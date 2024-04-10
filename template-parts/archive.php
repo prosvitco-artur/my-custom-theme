@@ -1,6 +1,6 @@
-<div class="container <?php do_action('alkima_theme_archive_container_classes'); ?>" id="content">
+<div class="container pt-5 <?php do_action('alkima_theme_archive_container_classes'); ?>" id="content">
 	<?php do_action('alkima_theme_start_archive_template'); ?>
-	<section class="ct-archive-section <?php do_action('alkima_theme_archive_section_classes'); ?>">
+	<section class="ct-archive-section pt-5 <?php do_action('alkima_theme_archive_section_classes'); ?>">
 		<?php do_action('alkima_theme_before_archive_loop'); ?>
 		<div class="page-header">
 			<?php

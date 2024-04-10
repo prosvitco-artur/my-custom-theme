@@ -27,12 +27,3 @@ require_once get_template_directory() . '/inc/public/pagination.php';
 require_once get_template_directory() . '/inc/public/classes/init.php';
 
 require_once get_template_directory() . '/inc/public/enqueue.php';
-
-
-function active_theme_is_dark_mode()
-{
-    if (isset($_COOKIE['theme']) && $_COOKIE['theme'] === 'dark') {
-        return true;
-    }
-    return false;
-}

@@ -9,6 +9,13 @@ body,
   flex-direction: column;
 }
 
-#content {
+.admin-bar #page {
+  height: calc(100vh - 32px);
+}
+// body.admin-bar {
+//   height: calc(100% - 32px);
+// }
+
+main {
   flex: 1;
 }
