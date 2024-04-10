@@ -3,13 +3,21 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
-        // main: './static/js/public/main.js',
-        switchDark: './static/js/public/switch-dark.js',
-        admin: './static/js/admin/admin.js'
+        admin: './static/admin/js/header-footer.js',
+        main: './static/admin/js/main.js',
+        switchDark: './static/public/js/switch-dark.js',
+        bootstrap: './static/public/js/bootstrap.js',
+        styles: './static/public/js/styles.js',
     },
     output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: (pathData) => {
+            if (pathData.chunk.name === 'admin') {
+                return 'admin/js/[name].js';
+            }
+            return 'public/js/[name].js';
+        },
+        path: path.resolve(__dirname, 'build'),
+        publicPath: '/',
     },
     mode: 'production',
     module: {
@@ -43,7 +51,12 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '[name].css',
+            filename: (pathData) => {
+                if (pathData.chunk.name === 'admin') {
+                    return 'admin/css/[name].css';
+                }
+                return 'public/css/[name].css';
+            },
         }),
     ],
 };
