@@ -23,7 +23,7 @@ function alkima_set_theme_mode()
 add_action('alkima_theme_header_after_menu', 'alkima_theme_dark_mode_switch');
 function alkima_theme_dark_mode_switch()
 { ?>
-    <div class="dark-mode-switch form-check form-switch">
+    <div class="dark-mode-switch form-check form-switch d-flex align-items-center">
       <input class="form-check-input cursor-pointer" type="checkbox" id="toggleDarkMode" <?= (isset($_COOKIE['theme']) && $_COOKIE['theme'] === 'dark') ? 'checked' : ''; ?>>
       <label class="form-check-label visually-hidden" for="toggleDarkMode">
         <?php _e('Toggle theme', 'alkima_theme'); ?>

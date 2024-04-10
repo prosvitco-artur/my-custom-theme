@@ -1,9 +1,50 @@
 {
 	"version": 2,
-
-
 	"settings": {
-
+		"color": {
+			"palette": [
+				{
+					"slug": "primary",
+					"color": "#64B5F6",
+					"name": "Main Color"
+				},
+				{
+					"slug": "secondary",
+					"color": "#1C2442",
+					"name": "Second color"
+				},
+				{
+					"slug": "success",
+					"color": "#BAF1D0",
+					"name": "Success"
+				},
+				{
+					"slug": "danger",
+					"color": "#FFCDD2",
+					"name": "Danger"
+				},
+				{
+					"slug": "warning",
+					"color": "#FFDD79",
+					"name": "Warning"
+				},
+				{
+					"slug": "info",
+					"color": "#B3E5FC",
+					"name": "Info"
+				},
+				{
+					"slug": "light",
+					"color": "#E3F2FD",
+					"name": "Light"
+				},
+				{
+					"slug": "dark",
+					"color": "#1E284C",
+					"name": "Dark"
+				}
+			]
+		},
 		"appearanceTools": true,
 		"spacing": {
 			"blockGap": true,
@@ -18,13 +59,11 @@
 				"vw"
 			]
 		},
-
 		"layout": {
 			"contentSize": "var(--theme-block-max-width)",
 			"wideSize": "var(--theme-block-wide-max-width)",
 			"fullSize": "none"
 		},
-
 		"typography": {
 			"fluid": true,
 			"fontSizes": [
@@ -65,13 +104,11 @@
 			]
 		}
 	},
-
-
 	"styles": {
 		"elements": {
 			"link": {
-				"typography": { 
-					"textDecoration": false 
+				"typography": {
+					"textDecoration": false
 				}
 			},
 			"button": {
@@ -93,7 +130,6 @@
 				}
 			}
 		},
-
 		"spacing": {
 			"blockGap": "var(--theme-content-spacing)"
 		}

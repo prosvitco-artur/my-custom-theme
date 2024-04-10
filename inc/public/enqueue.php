@@ -8,8 +8,8 @@ add_action('wp_enqueue_scripts', function () {
     );
 
     wp_enqueue_style(
-        'alkima-main',
-        get_template_directory_uri() . '/build/public/css/styles.css',
+    'alkima-main',
+    get_template_directory_uri() . '/build/public/css/styles.css',
     );
 
     wp_enqueue_script(

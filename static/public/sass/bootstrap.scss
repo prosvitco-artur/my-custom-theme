@@ -23,3 +23,15 @@
 @import "/node_modules/bootstrap/scss/forms";
 
 @import "/node_modules/bootstrap/scss/pagination";
+
+[data-bs-theme=dark] {
+    body {
+        background-color: var(--wp--preset--color--dark, --bs-body-color);
+    }
+}
+
+[data-bs-theme=light] {
+    body {
+        background-color: var(--wp--preset--color--light, --bs-body-color);
+    }
+}
